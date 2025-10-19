@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understanding Large Language Models: A Deep Dive into GPT Architecture">
+    <title>Understanding LLMs - Wasim Khan</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .blog-post-hero {
+            padding: 150px 0 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            text-align: center;
+        }
+        .blog-post-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .blog-post-meta {
+            color: #f0f0f0;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .blog-post-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .blog-post-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .blog-post-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+        }
+        .blog-post-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 30px 0 15px;
+        }
+        .blog-post-content p {
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        .blog-post-content li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        .blog-post-content code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../projects.html" class="nav-link">Projects</a></li>
+                <li><a href="../blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Post Hero -->
+    <section class="blog-post-hero">
+        <div class="container">
+            <div class="blog-post-meta">
+                <span>March 15, 2024</span> • <span>Machine Learning</span> • <span>10 min read</span>
+            </div>
+            <h1 class="blog-post-title">Understanding Large Language Models: A Deep Dive into GPT Architecture</h1>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post-content">
+        <a href="../blogs.html" class="back-link">← Back to Blogs</a>
+
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" alt="AI Neural Network">
+
+        <h2>Introduction</h2>
+        <p>
+            Large Language Models (LLMs) have revolutionized the field of natural language processing, enabling machines to understand and generate human-like text with unprecedented accuracy. At the heart of these models lies the transformer architecture, which has become the foundation for groundbreaking models like GPT (Generative Pre-trained Transformer).
+        </p>
+        <p>
+            In this comprehensive guide, we'll explore the inner workings of LLMs, diving deep into the GPT architecture and understanding how these models achieve such remarkable performance in language tasks.
+        </p>
+
+        <h2>The Transformer Architecture</h2>
+        <p>
+            The transformer architecture, introduced in the seminal paper "Attention is All You Need" by Vaswani et al., marked a paradigm shift in how we approach sequence-to-sequence tasks. Unlike traditional recurrent neural networks (RNNs), transformers process entire sequences in parallel, making them more efficient and capable of capturing long-range dependencies.
+        </p>
+
+        <h3>Key Components</h3>
+        <ul>
+            <li><strong>Self-Attention Mechanism:</strong> Allows the model to weigh the importance of different words in a sequence when processing each word.</li>
+            <li><strong>Multi-Head Attention:</strong> Multiple attention mechanisms working in parallel to capture different types of relationships.</li>
+            <li><strong>Positional Encoding:</strong> Injects information about the position of tokens in the sequence.</li>
+            <li><strong>Feed-Forward Networks:</strong> Process the attention outputs through dense layers.</li>
+            <li><strong>Layer Normalization:</strong> Stabilizes training and improves convergence.</li>
+        </ul>
+
+        <h2>GPT Architecture Deep Dive</h2>
+        <p>
+            GPT models are decoder-only transformers that use autoregressive language modeling. This means they predict the next token in a sequence based on all previous tokens. The architecture consists of stacked transformer decoder blocks, each containing self-attention and feed-forward layers.
+        </p>
+
+        <h3>Training Process</h3>
+        <ol>
+            <li><strong>Pre-training:</strong> The model is trained on massive amounts of text data using unsupervised learning, predicting the next token in sequences.</li>
+            <li><strong>Fine-tuning:</strong> The pre-trained model is adapted to specific tasks using supervised learning on smaller, task-specific datasets.</li>
+            <li><strong>Instruction Tuning:</strong> Recent models like GPT-3.5 and GPT-4 undergo additional training to follow instructions better.</li>
+        </ol>
+
+        <h2>Key Innovations in Modern LLMs</h2>
+        <p>
+            Modern LLMs have introduced several innovations that significantly improve their capabilities:
+        </p>
+
+        <h3>1. Scale</h3>
+        <p>
+            Increasing model size (number of parameters) has consistently led to better performance. GPT-3 has 175 billion parameters, while GPT-4 is rumored to have even more.
+        </p>
+
+        <h3>2. Few-Shot Learning</h3>
+        <p>
+            LLMs can learn new tasks from just a few examples provided in the prompt, without requiring fine-tuning. This emergent ability appears as models scale up.
+        </p>
+
+        <h3>3. Chain-of-Thought Reasoning</h3>
+        <p>
+            By prompting models to show their reasoning step-by-step, we can significantly improve their performance on complex reasoning tasks.
+        </p>
+
+        <h2>Practical Applications</h2>
+        <p>
+            LLMs have found applications across numerous domains:
+        </p>
+        <ul>
+            <li>Content generation and creative writing</li>
+            <li>Code generation and debugging</li>
+            <li>Question answering and information retrieval</li>
+            <li>Language translation</li>
+            <li>Sentiment analysis</li>
+            <li>Chatbots and virtual assistants</li>
+        </ul>
+
+        <h2>Challenges and Future Directions</h2>
+        <p>
+            Despite their impressive capabilities, LLMs face several challenges:
+        </p>
+        <ul>
+            <li><strong>Computational Cost:</strong> Training and running large models requires substantial computational resources.</li>
+            <li><strong>Hallucinations:</strong> Models sometimes generate plausible-sounding but incorrect information.</li>
+            <li><strong>Bias:</strong> Models can reflect and amplify biases present in their training data.</li>
+            <li><strong>Interpretability:</strong> Understanding why models make specific predictions remains challenging.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>
+            Large Language Models represent a significant milestone in artificial intelligence, demonstrating capabilities that were unimaginable just a few years ago. Understanding their architecture and training process is crucial for anyone working in NLP or AI.
+        </p>
+        <p>
+            As we continue to push the boundaries of what's possible with LLMs, we can expect even more exciting developments in the field. The key will be addressing current limitations while responsibly deploying these powerful tools.
+        </p>
+
+        <a href="../blogs.html" class="back-link">← Back to Blogs</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio website showcasing my work and skills">
+    <title>Wasim Khan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <p class="hero-tagline">Transforming Data into Intelligent Solutions</p>
+            <h1 class="hero-title">Hello, I'm <span class="highlight">Wasim Khan</span></h1>
+            <p class="hero-subtitle">AI Engineer | Machine Learning Specialist | Data Scientist</p>
+
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="assets/resume/Wasim Khan.pdf" target="_blank" class="btn btn-outline">Download Resume</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">AI Models Deployed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="assets/images/profile-pic.jpeg" alt="Wasim Khan">
+                </div>
+                <div class="about-text">
+                    <p>
+                        I'm a passionate AI Engineer specializing in machine learning and data science. With expertise in
+                        developing intelligent systems, I transform complex data into actionable insights and build AI solutions
+                        that solve real-world problems. My work spans across natural language processing, computer vision,
+                        and predictive analytics.
+                    </p>
+                    <p>
+                        I leverage cutting-edge frameworks like TensorFlow, PyTorch, and scikit-learn to create robust ML models,
+                        and deploy them using modern MLOps practices. From data preprocessing and feature engineering to model
+                        training and deployment, I handle the entire ML lifecycle with precision and scalability in mind.
+                    </p>
+                    <p>
+                        When I'm not training models or optimizing algorithms, you can find me exploring the latest research papers,
+                        contributing to open-source AI projects, experimenting with generative AI, or sharing knowledge with the
+                        tech community. I'm constantly learning and adapting to the rapidly evolving AI landscape.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder"><span>AI Chatbot</span></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Intelligent Conversational AI</h3>
+                        <p>Developed a context-aware chatbot using GPT models and LangChain. Implemented RAG (Retrieval-Augmented Generation) for domain-specific knowledge and fine-tuned responses. Built with Python, OpenAI API, and deployed on AWS.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo</a>
+                            <a href="#" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder"><span>Image Recognition</span></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Real-Time Object Detection System</h3>
+                        <p>Built a real-time object detection system using YOLOv8 and PyTorch. Achieved 95% accuracy on custom datasets with transfer learning. Integrated with REST API for seamless deployment and scalable inference.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo</a>
+                            <a href="#" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder"><span>ML Pipeline</span></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>End-to-End MLOps Pipeline</h3>
+                        <p>Designed and deployed a complete MLOps pipeline for predictive analytics. Automated model training, versioning with MLflow, CI/CD with GitHub Actions, and containerized deployment using Docker and Kubernetes for production-ready ML solutions.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo</a>
+                            <a href="#" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="view-all-card">
+                    <a href="projects.html" class="btn-view-all">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="38" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M30 40H50M50 40L43 33M50 40L43 47" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <span class="view-all-label">View All</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section id="blogs" class="blogs section">
+        <div class="container">
+            <h2 class="section-title">Latest Blogs</h2>
+            <div class="blogs-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="AI Blog">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">Mar 15, 2024</span>
+                            <span class="blog-category">Machine Learning</span>
+                        </div>
+                        <h3 class="blog-title">Understanding Large Language Models: A Deep Dive into GPT Architecture</h3>
+                        <p class="blog-excerpt">Explore the inner workings of Large Language Models and how transformer architecture revolutionized natural language processing...</p>
+                        <a href="blog/understanding-llms.html" class="blog-link">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=80" alt="Computer Vision Blog">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">Mar 10, 2024</span>
+                            <span class="blog-category">Computer Vision</span>
+                        </div>
+                        <h3 class="blog-title">Advanced Object Detection with YOLOv8: Tips and Best Practices</h3>
+                        <p class="blog-excerpt">Learn how to implement and optimize YOLOv8 for real-time object detection in production environments...</p>
+                        <a href="blog/yolov8-object-detection.html" class="blog-link">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80" alt="MLOps Blog">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">Mar 5, 2024</span>
+                            <span class="blog-category">MLOps</span>
+                        </div>
+                        <h3 class="blog-title">Building Scalable ML Pipelines: From Development to Production</h3>
+                        <p class="blog-excerpt">A comprehensive guide to designing and implementing robust MLOps pipelines using modern tools and best practices...</p>
+                        <a href="blog/mlops-pipelines.html" class="blog-link">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-container">
+                <a href="blogs.html" class="btn btn-primary">View All Blogs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming & Cloud</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>C#</li>
+                        <li>AWS</li>
+                        <li>Azure</li>
+                        <li>GCP</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>ML Frameworks</h3>
+                    <ul class="skill-list">
+                        <li>TensorFlow</li>
+                        <li>Keras</li>
+                        <li>PyTorch</li>
+                        <li>Scikit-learn</li>
+                        <li>XGBoost</li>
+                        <li>Jupyter Notebook</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Science</h3>
+                    <ul class="skill-list">
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                        <li>SciPy</li>
+                        <li>Matplotlib</li>
+                        <li>BigQuery</li>
+                        <li>Google Data Studio</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>AI & Deep Learning</h3>
+                    <ul class="skill-list">
+                        <li>LLMs & GPT Models</li>
+                        <li>Generative AI</li>
+                        <li>Deep Learning</li>
+                        <li>Neural Networks</li>
+                        <li>Computer Vision</li>
+                        <li>Clustering</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>NLP & Analytics</h3>
+                    <ul class="skill-list">
+                        <li>NLTK</li>
+                        <li>spaCy</li>
+                        <li>Stanza</li>
+                        <li>NLP (Transformers)</li>
+                        <li>Regression & Classification</li>
+                        <li>Predictive Modelling</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>MLOps & Deployment</h3>
+                    <ul class="skill-list">
+                        <li>Docker</li>
+                        <li>Git & Linux</li>
+                        <li>CI/CD</li>
+                        <li>Model Deployment</li>
+                        <li>Data Visualization</li>
+                        <li>MLflow</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p class="contact-intro">
+                    Have a project in mind or just want to say hello? Feel free to reach out!
+                </p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

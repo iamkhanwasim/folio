@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced Object Detection with YOLOv8: Tips and Best Practices">
+    <title>YOLOv8 Object Detection - Wasim Khan</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .blog-post-hero {
+            padding: 150px 0 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            text-align: center;
+        }
+        .blog-post-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .blog-post-meta {
+            color: #f0f0f0;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .blog-post-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .blog-post-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .blog-post-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+        }
+        .blog-post-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 30px 0 15px;
+        }
+        .blog-post-content p {
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        .blog-post-content li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../projects.html" class="nav-link">Projects</a></li>
+                <li><a href="../blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="blog-post-hero">
+        <div class="container">
+            <div class="blog-post-meta">
+                <span>March 10, 2024</span> • <span>Computer Vision</span> • <span>12 min read</span>
+            </div>
+            <h1 class="blog-post-title">Advanced Object Detection with YOLOv8: Tips and Best Practices</h1>
+        </div>
+    </section>
+
+    <section class="blog-post-content">
+        <a href="../blogs.html" class="back-link">← Back to Blogs</a>
+
+        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=1200&q=80" alt="Computer Vision">
+
+        <h2>Introduction</h2>
+        <p>
+            YOLOv8 represents the latest evolution in the YOLO (You Only Look Once) family of object detection models. With improved accuracy, faster inference speeds, and enhanced ease of use, YOLOv8 has become the go-to choice for real-time object detection applications across various industries.
+        </p>
+
+        <h2>Key Features of YOLOv8</h2>
+        <ul>
+            <li><strong>State-of-the-art Performance:</strong> Achieves impressive accuracy while maintaining real-time speeds</li>
+            <li><strong>Multiple Model Sizes:</strong> From YOLOv8n (nano) to YOLOv8x (extra-large) for different use cases</li>
+            <li><strong>Easy to Use API:</strong> Simplified training and inference workflow</li>
+            <li><strong>Support for Multiple Tasks:</strong> Detection, segmentation, classification, and pose estimation</li>
+        </ul>
+
+        <h2>Dataset Preparation</h2>
+        <p>
+            Proper dataset preparation is crucial for achieving optimal performance. Follow these best practices:
+        </p>
+        <ol>
+            <li>Ensure diverse training data covering various scenarios</li>
+            <li>Properly annotate all objects with accurate bounding boxes</li>
+            <li>Maintain consistent annotation quality across the dataset</li>
+            <li>Split data into training, validation, and test sets (typically 70-20-10)</li>
+        </ol>
+
+        <h2>Training Strategies</h2>
+        <h3>Transfer Learning</h3>
+        <p>
+            Start with pre-trained weights and fine-tune on your custom dataset. This significantly reduces training time and improves performance, especially with limited data.
+        </p>
+
+        <h3>Hyperparameter Tuning</h3>
+        <p>
+            Key hyperparameters to optimize include learning rate, batch size, image size, and augmentation parameters. Use techniques like learning rate scheduling and early stopping for better results.
+        </p>
+
+        <h2>Data Augmentation</h2>
+        <p>
+            YOLOv8 includes built-in augmentation techniques such as:
+        </p>
+        <ul>
+            <li>Mosaic augmentation</li>
+            <li>Mixup</li>
+            <li>Random scaling and translation</li>
+            <li>Color space transformations</li>
+        </ul>
+
+        <h2>Deployment Optimization</h2>
+        <h3>Model Export</h3>
+        <p>
+            YOLOv8 supports multiple export formats including ONNX, TensorRT, and CoreML for deployment across different platforms and devices.
+        </p>
+
+        <h3>Inference Optimization</h3>
+        <ul>
+            <li>Use appropriate batch sizes for your hardware</li>
+            <li>Leverage GPU acceleration when available</li>
+            <li>Consider quantization for edge devices</li>
+            <li>Implement efficient pre and post-processing pipelines</li>
+        </ul>
+
+        <h2>Production Best Practices</h2>
+        <ol>
+            <li><strong>Monitoring:</strong> Track model performance metrics in production</li>
+            <li><strong>Versioning:</strong> Maintain proper model version control</li>
+            <li><strong>A/B Testing:</strong> Test new models before full deployment</li>
+            <li><strong>Fallback Mechanisms:</strong> Implement error handling and fallback strategies</li>
+        </ol>
+
+        <h2>Common Challenges and Solutions</h2>
+        <h3>Small Object Detection</h3>
+        <p>
+            Increase input resolution and use appropriate anchor sizes for small objects. Consider using multi-scale training and testing.
+        </p>
+
+        <h3>Class Imbalance</h3>
+        <p>
+            Use weighted loss functions or oversample minority classes during training to handle imbalanced datasets.
+        </p>
+
+        <h2>Conclusion</h2>
+        <p>
+            YOLOv8 provides a powerful and flexible framework for object detection tasks. By following these best practices and optimization strategies, you can build robust real-time detection systems that perform well in production environments.
+        </p>
+
+        <a href="../blogs.html" class="back-link">← Back to Blogs</a>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
