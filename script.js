@@ -88,26 +88,90 @@ window.addEventListener('scroll', () => {
 // ===== Contact Form Handling =====
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
 
-    // Simple validation
-    if (name && email && message) {
-        // Display success message
-        alert('Thank you for your message! I will get back to you soon.');
+        // Simple validation
+        if (name && email && message) {
+            // Display success message
+            alert('Thank you for your message! I will get back to you soon.');
 
-        // Reset form
-        contactForm.reset();
+            // Reset form
+            contactForm.reset();
 
-        // In a real application, you would send this data to a server
-        console.log('Form submitted:', { name, email, message });
-    } else {
-        alert('Please fill in all fields.');
+            // In a real application, you would send this data to a server
+            console.log('Form submitted:', { name, email, message });
+        } else {
+            alert('Please fill in all fields.');
+        }
+    });
+}
+
+// ===== Image Modal/Lightbox =====
+// Create modal HTML structure
+const createImageModal = () => {
+    const modal = document.createElement('div');
+    modal.id = 'imageModal';
+    modal.className = 'image-modal';
+    modal.innerHTML = `
+        <span class="image-modal-close">&times;</span>
+        <img class="image-modal-content" id="modalImage" alt="">
+        <div class="image-modal-caption"></div>
+    `;
+    document.body.appendChild(modal);
+    return modal;
+};
+
+// Initialize modal
+let imageModal = document.getElementById('imageModal');
+if (!imageModal) {
+    imageModal = createImageModal();
+}
+
+const modalImage = document.getElementById('modalImage');
+const modalCaption = document.querySelector('.image-modal-caption');
+const closeModal = document.querySelector('.image-modal-close');
+
+// Add click event to all images within article content
+const articleImages = document.querySelectorAll('.article-content img, .diagram img');
+
+articleImages.forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+        imageModal.style.display = 'flex';
+        modalImage.src = img.src;
+        modalCaption.textContent = img.alt || '';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+});
+
+// Close modal when clicking the close button
+if (closeModal) {
+    closeModal.addEventListener('click', () => {
+        imageModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+}
+
+// Close modal when clicking outside the image
+imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+        imageModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && imageModal.style.display === 'flex') {
+        imageModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
     }
 });
 

@@ -70,12 +70,12 @@ Create {{filename}}.html in articles/{{category}} based on content in art.icleco
 ### Standard CSS Components:
 | Class | Purpose | Style |
 |-------|---------|-------|
-| `.highlight-box` | Important introductions | Left border accent |
+| `.highlight-box` | Important introductions | Left border accent, card background |
 | `.concept-box` | Key concepts | Primary color background |
 | `.example-box` | Practical examples | Yellow/orange theme |
-| `.diagram` | Images/diagrams | Centered with shadow |
-| `.code-block` | Code snippets | Dark background |
-| `.formula` | Mathematical formulas | Centered, bordered |
+| `.diagram` | Images/diagrams | Centered, **transparent background** |
+| `.code-block` | Code snippets | Dark background (#1e1e1e) |
+| `.formula` | Mathematical formulas | Centered, bordered, card background |
 
 ### Link Styling (Already in styles.css):
 ✅ Links within `.article-content` are automatically styled with:
@@ -86,10 +86,54 @@ Create {{filename}}.html in articles/{{category}} based on content in art.icleco
 
 **No additional styling needed for interlinks** - they work out of the box!
 
+### Image Modal/Lightbox (Already Implemented):
+✅ Automatically works for all images in articles
+- No additional HTML needed - just add `<img>` tags normally
+- Implemented in `script.js` and `styles.css`
+- Features:
+  - Click image to open in fullscreen modal
+  - Close with × button, Escape key, or click outside
+  - Shows alt text as caption
+  - Smooth fade/zoom animations
+  - Prevents body scroll when open
+  - Dark overlay (95% black)
+
 ### Image Paths:
 - Images stored in: `images/`
-- Reference from HTML: `../../images/{{image-name}}.png`
+- Reference from HTML: `../../images/{{image-name}}.png` or `.jpg`
 - Diagrams XML stored in: `diagrams/{{category}}/`
+
+### Adding Images to Articles:
+**Format:**
+```html
+<div class="diagram">
+    <img src="../../images/{{image-name}}.jpg" alt="{{Descriptive Alt Text}}">
+</div>
+```
+
+**Styling Notes:**
+- `.diagram` has **transparent background** - images blend seamlessly with page
+- Includes padding and centered alignment
+- Images are responsive (max-width: 100%)
+
+**Image Modal Feature:**
+✅ All images in articles automatically support click-to-zoom in a modal/lightbox
+- Click any image to view it larger
+- Close with × button, clicking outside, or pressing Escape
+- Displays image alt text as caption
+- Smooth animations and dark overlay
+- Works in both light and dark modes
+
+**Best Placement:**
+- After introductory paragraphs
+- After key concept explanations
+- Between major sections to break up text
+- After highlight boxes with lists
+
+**Quick Command:**
+```
+Add image to {{article-name}}.html from images/{{image-filename}}.jpg
+```
 
 ---
 

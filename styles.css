@@ -1,11 +1,13 @@
 /* ===== CSS Variables ===== */
 :root {
     --primary-color: #2563eb;
+    --accent-color: #7c3aed;
     --text-primary: #111827;
     --text-secondary: #6b7280;
     --bg-primary: #ffffff;
     --bg-secondary: #f9fafb;
     --bg-dark: #1f2937;
+    --card-bg: #ffffff;
     --border-color: #e5e7eb;
     --border-light: #f3f4f6;
 }
@@ -13,11 +15,13 @@
 /* Dark Theme */
 [data-theme="dark"] {
     --primary-color: #60a5fa;
+    --accent-color: #a78bfa;
     --text-primary: #f9fafb;
     --text-secondary: #d1d5db;
     --bg-primary: #111827;
     --bg-secondary: #1f2937;
     --bg-dark: #030712;
+    --card-bg: #1f2937;
     --border-color: #374151;
     --border-light: #4b5563;
 }
@@ -625,6 +629,91 @@ section {
     color: white;
     padding: 2rem 0;
     text-align: left;
+}
+
+/* ===== Image Modal/Lightbox ===== */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.image-modal-content {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1;
+    user-select: none;
+}
+
+.image-modal-close:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.image-modal-caption {
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 2rem;
+    max-width: 90%;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+/* Make images clickable - add cursor pointer */
+.article-content img,
+.diagram img {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.article-content img:hover,
+.diagram img:hover {
+    opacity: 0.9;
 }
 
 /* ===== Responsive Design ===== */
