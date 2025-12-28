@@ -24,12 +24,13 @@ Create article:
 
 **What Claude Code Does:**
 1. Read the prompt template from `templates/ARTICLE_PROMPT.md`
-2. Read the notes image from `Notes/` folder
+2. Read the notes image from `Notes/` folder (if applicable)
 3. Generate article content following the template guidelines
 4. Create diagram XML if needed → save to `diagrams/{{category}}/`
 5. Create final HTML → save to `articles/{{category}}/`
-6. Update category index page (e.g., `statistics.html`)
-7. Update `blog.html` if needed
+6. **ALWAYS update category index page** (e.g., `data-structures-algorithms.html`)
+7. **Consider adding interlinks** to related articles in the same category
+8. Update `blog.html` if needed
 
 ---
 
@@ -76,6 +77,15 @@ Create {{filename}}.html in articles/{{category}} based on content in art.icleco
 | `.code-block` | Code snippets | Dark background |
 | `.formula` | Mathematical formulas | Centered, bordered |
 
+### Link Styling (Already in styles.css):
+✅ Links within `.article-content` are automatically styled with:
+- Primary color (adapts to light/dark mode)
+- Visible underline (2px thickness)
+- Hover effects
+- Good contrast in both themes
+
+**No additional styling needed for interlinks** - they work out of the box!
+
 ### Image Paths:
 - Images stored in: `images/`
 - Reference from HTML: `../../images/{{image-name}}.png`
@@ -102,7 +112,9 @@ Create {{filename}}.html in articles/{{category}} based on content in art.icleco
 
 ## Category Index Updates
 
-When adding a new article, update the category index page:
+⚠️ **CRITICAL: ALWAYS update the category index page when creating an article!**
+
+When adding a new article, **you MUST update the category index page**:
 
 **List Style:**
 ```html
@@ -114,6 +126,14 @@ When adding a new article, update the category index page:
     </li>
 </ul>
 ```
+
+**Category Index Files:**
+- Data Structures & Algorithms: `data-structures-algorithms.html`
+- Statistics: `statistics.html`
+- Machine Learning: `machine-learning.html`
+- Python: `python.html`
+- Technical Articles: `technical-articles.html`
+- Linear Algebra: `linear-algebra.html`
 
 **Also update `blog.html`:**
 - Add article to appropriate category section
@@ -202,17 +222,47 @@ When generating article content, follow these rules:
 
 ---
 
-## Adding Internal Links
+## Adding Internal Links (Interlinks)
 
-**Simple version:**
-```
-Add internal links between related articles in {{folder/category name}}
+**Why Interlinks Matter:**
+- Helps readers discover related content
+- Improves SEO and user engagement
+- Creates a connected knowledge base
+
+**When to Add Interlinks:**
+- After creating a new article
+- When an article mentions concepts covered in other articles
+- When reviewing/updating existing content
+
+**Where to Add Interlinks:**
+Add links within article content when mentioning:
+- Related data structures (e.g., "Arrays" article mentions "Hash Tables")
+- Prerequisites (e.g., "Advanced topic" links to "Basics")
+- Follow-up topics (e.g., "Intro" suggests "Deep Dive")
+
+**Example:**
+```html
+<p>Understanding <a href="what-are-data-structures.html">data structures</a> is essential
+before analyzing computational complexity.</p>
 ```
 
-**Specific version:**
+**Commands:**
+
+Simple version:
+```
+Add internal links between related articles in {{category}}
+```
+
+Specific version:
 ```
 Review all articles in articles/{{category}} and add cross-reference links where topics are mentioned
 ```
+
+**Best Practices:**
+- Link to articles in the same category using relative paths
+- Use descriptive anchor text (not "click here")
+- Add 2-4 relevant interlinks per article
+- Don't overlink - only link genuinely related content
 
 ---
 

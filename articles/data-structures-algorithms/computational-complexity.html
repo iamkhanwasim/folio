@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understanding Computational Complexity: Time and Space Complexity Analysis by Wasim Khan">
+    <title>Computational Complexity - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .code-block {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        /* Syntax Highlighting */
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .code-block .number {
+            color: #b5cea8;
+        }
+        .code-block .operator {
+            color: #d4d4d4;
+        }
+        .code-block .variable {
+            color: #9cdcfe;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .code-block,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">Computational Complexity</h1>
+                <p class="article-date">March 2020</p>
+
+                <div class="article-content">
+                    <p>Computational complexity measures how algorithm performance scales with input size. It answers two fundamental questions: how much time does an algorithm take, and how much memory does it use? Understanding complexity helps choose the right algorithm and predict how code behaves with larger datasets. This is particularly important when selecting <a href="what-are-data-structures.html">data structures</a> for your programs.</p>
+
+                    <p>Complexity is expressed using Big O notation, which describes the worst-case growth rate. Instead of counting exact operations, it focuses on how runtime or memory usage grows relative to input size. This abstraction makes it possible to compare algorithms independent of hardware or programming language.</p>
+
+                    <h2>Time Complexity</h2>
+                    <p>Time complexity measures how many operations an algorithm performs as input size increases. It focuses on the dominant factor that affects runtime. Different <a href="what-are-data-structures.html">data structures</a> have different time complexities for common operations like search, insert, and delete.</p>
+
+                    <div class="highlight-box">
+                        <h3>Common Time Complexities (from fastest to slowest):</h3>
+                        <ul>
+                            <li><strong>O(1) - Constant:</strong> Operations take the same time regardless of input size</li>
+                            <li><strong>O(log n) - Logarithmic:</strong> Time grows logarithmically (binary search)</li>
+                            <li><strong>O(n) - Linear:</strong> Time grows proportionally with input size</li>
+                            <li><strong>O(n log n) - Linearithmic:</strong> Efficient sorting algorithms</li>
+                            <li><strong>O(n²) - Quadratic:</strong> Nested loops over the data</li>
+                            <li><strong>O(2ⁿ) - Exponential:</strong> Doubles with each additional input</li>
+                            <li><strong>O(n!) - Factorial:</strong> Trying all permutations</li>
+                        </ul>
+                    </div>
+
+                    <h2>O(1) - Constant Time</h2>
+                    <p>Operations complete in the same time regardless of input size. Array access, hash table lookups, and simple calculations are O(1).</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Array access - O(1)</span>
+<span class="keyword">def</span> <span class="function">get_first_element</span>(arr):
+    <span class="keyword">return</span> arr[<span class="number">0</span>]
+
+<span class="comment"># Dictionary lookup - O(1) average</span>
+<span class="keyword">def</span> <span class="function">get_value</span>(dictionary, key):
+    <span class="keyword">return</span> dictionary[key]
+
+<span class="comment"># Simple arithmetic - O(1)</span>
+<span class="keyword">def</span> <span class="function">add</span>(a, b):
+    <span class="keyword">return</span> a <span class="operator">+</span> b</code></pre>
+                    </div>
+
+                    <h2>O(n) - Linear Time</h2>
+                    <p>Time grows linearly with input size. Iterating through an array once is O(n).</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Linear search - O(n)</span>
+<span class="keyword">def</span> <span class="function">find_element</span>(arr, target):
+    <span class="keyword">for</span> item <span class="keyword">in</span> arr:
+        <span class="keyword">if</span> item <span class="operator">==</span> target:
+            <span class="keyword">return</span> <span class="keyword">True</span>
+    <span class="keyword">return</span> <span class="keyword">False</span>
+
+<span class="comment"># Sum all elements - O(n)</span>
+<span class="keyword">def</span> <span class="function">sum_array</span>(arr):
+    total <span class="operator">=</span> <span class="number">0</span>
+    <span class="keyword">for</span> num <span class="keyword">in</span> arr:
+        total <span class="operator">+=</span> num
+    <span class="keyword">return</span> total</code></pre>
+                    </div>
+
+                    <h2>O(n²) - Quadratic Time</h2>
+                    <p>Common in nested loops where each element is compared with every other element. Performance degrades quickly with larger inputs.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Bubble sort - O(n²)</span>
+<span class="keyword">def</span> <span class="function">bubble_sort</span>(arr):
+    n <span class="operator">=</span> <span class="function">len</span>(arr)
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(n):
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(<span class="number">0</span>, n <span class="operator">-</span> i <span class="operator">-</span> <span class="number">1</span>):
+            <span class="keyword">if</span> arr[j] <span class="operator">></span> arr[j <span class="operator">+</span> <span class="number">1</span>]:
+                arr[j], arr[j <span class="operator">+</span> <span class="number">1</span>] <span class="operator">=</span> arr[j <span class="operator">+</span> <span class="number">1</span>], arr[j]
+    <span class="keyword">return</span> arr
+
+<span class="comment"># Check for duplicates - O(n²)</span>
+<span class="keyword">def</span> <span class="function">has_duplicates</span>(arr):
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(arr)):
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(i <span class="operator">+</span> <span class="number">1</span>, <span class="function">len</span>(arr)):
+            <span class="keyword">if</span> arr[i] <span class="operator">==</span> arr[j]:
+                <span class="keyword">return</span> <span class="keyword">True</span>
+    <span class="keyword">return</span> <span class="keyword">False</span></code></pre>
+                    </div>
+
+                    <h2>O(log n) - Logarithmic Time</h2>
+                    <p>Halves the problem size with each step. Binary search on sorted data is the classic example.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Binary search - O(log n)</span>
+<span class="keyword">def</span> <span class="function">binary_search</span>(arr, target):
+    left, right <span class="operator">=</span> <span class="number">0</span>, <span class="function">len</span>(arr) <span class="operator">-</span> <span class="number">1</span>
+
+    <span class="keyword">while</span> left <span class="operator"><=</span> right:
+        mid <span class="operator">=</span> (left <span class="operator">+</span> right) <span class="operator">//</span> <span class="number">2</span>
+
+        <span class="keyword">if</span> arr[mid] <span class="operator">==</span> target:
+            <span class="keyword">return</span> mid
+        <span class="keyword">elif</span> arr[mid] <span class="operator"><</span> target:
+            left <span class="operator">=</span> mid <span class="operator">+</span> <span class="number">1</span>
+        <span class="keyword">else</span>:
+            right <span class="operator">=</span> mid <span class="operator">-</span> <span class="number">1</span>
+
+    <span class="keyword">return</span> <span class="operator">-</span><span class="number">1</span></code></pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Why O(log n) is fast:</strong></p>
+                        <ul>
+                            <li>Searching 1,000 items takes ~10 operations</li>
+                            <li>Searching 1,000,000 items takes ~20 operations</li>
+                            <li>Searching 1,000,000,000 items takes ~30 operations</li>
+                        </ul>
+                    </div>
+
+                    <h2>Space Complexity</h2>
+                    <p>Space complexity measures how much additional memory an algorithm needs relative to input size. It includes variables, data structures, recursive call stacks, and temporary storage.</p>
+
+                    <div class="highlight-box">
+                        <h3>Common Space Complexities:</h3>
+                        <ul>
+                            <li><strong>O(1) - Constant Space:</strong> Fixed amount of memory regardless of input</li>
+                            <li><strong>O(n) - Linear Space:</strong> Memory grows proportionally with input size</li>
+                            <li><strong>O(n²) - Quadratic Space:</strong> Creating 2D arrays or matrices</li>
+                        </ul>
+                    </div>
+
+                    <h2>O(1) Space - Constant</h2>
+                    <p>Uses a fixed amount of memory. Variables don't scale with input size.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># In-place reversal - O(1) space</span>
+<span class="keyword">def</span> <span class="function">reverse_array</span>(arr):
+    left, right <span class="operator">=</span> <span class="number">0</span>, <span class="function">len</span>(arr) <span class="operator">-</span> <span class="number">1</span>
+    <span class="keyword">while</span> left <span class="operator"><</span> right:
+        arr[left], arr[right] <span class="operator">=</span> arr[right], arr[left]
+        left <span class="operator">+=</span> <span class="number">1</span>
+        right <span class="operator">-=</span> <span class="number">1</span>
+    <span class="keyword">return</span> arr
+
+<span class="comment"># Only uses two variables: left and right</span></code></pre>
+                    </div>
+
+                    <h2>O(n) Space - Linear</h2>
+                    <p>Creates new data structures proportional to input size. Common in recursion and when building output collections.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Creating a copy - O(n) space</span>
+<span class="keyword">def</span> <span class="function">double_values</span>(arr):
+    result <span class="operator">=</span> []
+    <span class="keyword">for</span> num <span class="keyword">in</span> arr:
+        result.<span class="function">append</span>(num <span class="operator">*</span> <span class="number">2</span>)
+    <span class="keyword">return</span> result
+
+<span class="comment"># Recursive factorial - O(n) space due to call stack</span>
+<span class="keyword">def</span> <span class="function">factorial</span>(n):
+    <span class="keyword">if</span> n <span class="operator"><=</span> <span class="number">1</span>:
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> n <span class="operator">*</span> <span class="function">factorial</span>(n <span class="operator">-</span> <span class="number">1</span>)
+
+<span class="comment"># Each recursive call adds to the call stack</span></code></pre>
+                    </div>
+
+                    <h2>Time vs Space Tradeoffs</h2>
+                    <p>Often there's a tradeoff between time and space. Caching results uses more memory but saves computation time. Understanding both complexities helps make informed decisions.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Fibonacci without memoization - O(2ⁿ) time, O(n) space</span>
+<span class="keyword">def</span> <span class="function">fib_slow</span>(n):
+    <span class="keyword">if</span> n <span class="operator"><=</span> <span class="number">1</span>:
+        <span class="keyword">return</span> n
+    <span class="keyword">return</span> <span class="function">fib_slow</span>(n <span class="operator">-</span> <span class="number">1</span>) <span class="operator">+</span> <span class="function">fib_slow</span>(n <span class="operator">-</span> <span class="number">2</span>)
+
+<span class="comment"># Fibonacci with memoization - O(n) time, O(n) space</span>
+<span class="keyword">def</span> <span class="function">fib_fast</span>(n, memo<span class="operator">=</span>{}):
+    <span class="keyword">if</span> n <span class="keyword">in</span> memo:
+        <span class="keyword">return</span> memo[n]
+    <span class="keyword">if</span> n <span class="operator"><=</span> <span class="number">1</span>:
+        <span class="keyword">return</span> n
+
+    memo[n] <span class="operator">=</span> <span class="function">fib_fast</span>(n <span class="operator">-</span> <span class="number">1</span>, memo) <span class="operator">+</span> <span class="function">fib_fast</span>(n <span class="operator">-</span> <span class="number">2</span>, memo)
+    <span class="keyword">return</span> memo[n]
+
+<span class="comment"># Trading O(n) extra space for exponential time savings</span></code></pre>
+                    </div>
+
+                    <h2>Practical Complexity Analysis</h2>
+                    <div class="highlight-box">
+                        <p><strong>Real-world impact at scale:</strong></p>
+                        <ul>
+                            <li><strong>1,000 items:</strong> O(n) = 1,000 ops, O(n²) = 1,000,000 ops</li>
+                            <li><strong>10,000 items:</strong> O(n) = 10,000 ops, O(n²) = 100,000,000 ops</li>
+                            <li><strong>1,000,000 items:</strong> O(log n) = 20 ops, O(n) = 1,000,000 ops</li>
+                        </ul>
+                    </div>
+
+                    <h2>Analyzing Complexity</h2>
+                    <div class="highlight-box">
+                        <h3>Steps to determine complexity:</h3>
+                        <ul>
+                            <li><strong>Identify loops:</strong> Single loop = O(n), nested = O(n²)</li>
+                            <li><strong>Check data structures:</strong> Hash table lookups = O(1), array search = O(n)</li>
+                            <li><strong>Look for recursion:</strong> Count recursive calls and depth</li>
+                            <li><strong>Drop constants:</strong> O(2n) becomes O(n)</li>
+                            <li><strong>Keep dominant term:</strong> O(n² + n) becomes O(n²)</li>
+                            <li><strong>Consider worst case:</strong> What happens with the largest input?</li>
+                        </ul>
+                    </div>
+
+                    <h2>Common Pitfalls</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Hidden complexity:</strong> String concatenation in loops can be O(n²)</li>
+                            <li><strong>Library functions:</strong> <code>sort()</code> is O(n log n), not O(1)</li>
+                            <li><strong>Nested operations:</strong> Loop containing a search = O(n²)</li>
+                            <li><strong>Recursive space:</strong> Call stack uses O(n) space for n recursive calls</li>
+                        </ul>
+                    </div>
+
+                    <h2>Key Takeaways</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Big O describes growth rate</strong>, not exact operations</li>
+                            <li><strong>Time complexity</strong> measures computational steps</li>
+                            <li><strong>Space complexity</strong> measures memory usage</li>
+                            <li><strong>O(1) and O(log n)</strong> are highly efficient</li>
+                            <li><strong>O(n) is acceptable</strong> for most problems</li>
+                            <li><strong>O(n²) and worse</strong> become problematic at scale</li>
+                            <li><strong>Analyze worst case</strong> to guarantee performance</li>
+                            <li><strong>Understand tradeoffs</strong> between time and space</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../data-structures-algorithms.html" class="btn btn-secondary">← Back to Data Structures & Algorithms</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

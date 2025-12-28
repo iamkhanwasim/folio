@@ -508,6 +508,47 @@ section {
     color: var(--primary-color);
 }
 
+.article-content a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-decoration-color: var(--primary-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+}
+
+.article-content a:hover {
+    color: var(--primary-color);
+    text-decoration-thickness: 3px;
+    opacity: 0.8;
+}
+
+.article-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.article-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.article-content ul,
+.article-content ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.article-content li {
+    margin-bottom: 0.5rem;
+}
+
 /* ===== Contact Section ===== */
 .contact {
     background: var(--bg-secondary);

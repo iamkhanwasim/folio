@@ -1,7 +1,8 @@
 Create article:
 - Folder: articles/data-structures-algorithms
-- Topic: Fundamentals of units of digital information and storage in computing
+- Topic: Computational complexity
 - Date: Mar 2020
 - Notes:
-    - Bits, Bytes, MB, KB, GB
-    - with respect to python
+    - Time complexity
+    - Space complexity
+    - examples
