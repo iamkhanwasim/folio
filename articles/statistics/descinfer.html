@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descriptive and Inferential Statistics - Understanding the fundamental branches of statistics by Wasim Khan">
+    <title>Descriptive and Inferential Statistics - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        .concept-box {
+            background: rgba(var(--primary-rgb), 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .concept-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .concept-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .concept-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .concept-box li {
+            margin-bottom: 0.5rem;
+        }
+        .concept-box li:last-child {
+            margin-bottom: 0;
+        }
+        .example-box {
+            background: rgba(255, 193, 7, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #f39c12;
+        }
+        .example-box h3 {
+            margin-top: 0;
+            color: #f39c12;
+        }
+        .example-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .example-box p:last-child {
+            margin-bottom: 0;
+        }
+        code {
+            background-color: rgba(var(--primary-rgb), 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .concept-box,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + .example-box,
+        .article-content h2 + p,
+        .article-content h2 + ul {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">Descriptive and Inferential Statistics</h1>
+                <p class="article-date">September 2020</p>
+
+                <div class="article-content">
+                    <div class="highlight-box">
+                        <p>Statistics splits into two fundamental branches: descriptive and inferential. Understanding the distinction matters because they answer different questions. Descriptive statistics tells you what the data looks like. Inferential statistics tells you what conclusions you can draw about a larger population from a sample.</p>
+                    </div>
+
+                    <div class="diagram">
+                        <img src="../../images/DescInferStat1.png" alt="Descriptive and Inferential Statistics Overview" />
+                    </div>
+
+                    <h2>Descriptive Statistics</h2>
+                    <p>Descriptive statistics organizes and summarizes data using numbers and graphs. It describes what is present in the dataset without making claims beyond it.</p>
+
+                    <div class="concept-box">
+                        <h3>Key components of descriptive statistics:</h3>
+                        <ul>
+                            <li><strong>Data summary visualizations:</strong> Bar graphs, histograms, pie charts. The shape of distributions and skewness patterns reveal data characteristics at a glance.</li>
+                            <li><strong>Measures of central tendency:</strong> Mean, median, and mode. Mean (<code>x̄ = Σx/n</code> for sample, <code>μ = Σx/N</code> for population) gives the average. Median is the middle value when data is sorted. Mode is the most frequently occurring value.</li>
+                            <li><strong>Measures of variability:</strong> Range, variance, and standard deviation. These quantify how spread out the data is around the center.</li>
+                        </ul>
+                    </div>
+
+                    <h2>Inferential Statistics</h2>
+                    <p>Inferential statistics uses sample data to make inferences or draw conclusions about a larger population. It relies on probability to determine how confident we can be that our conclusions are correct.</p>
+
+                    <div class="example-box">
+                        <h3>Practical Example</h3>
+                        <p>Consider a practical example. A city (XYZ) has 100,000 residents. Surveying everyone to ask "Do you like blue cars?" is impractical. Instead, survey a sample of 100 people. If 20 say yes, that is 20/100 = 20%. This 20% from the sample is descriptive statistics.</p>
+
+                        <p>The inferential part comes next: how confident are we that the true population proportion is around 20%? With a sample of 100, the result might be reported as 20% ± 2% with 95% confidence. This means we are 95% confident the true population value falls between 18% and 22%.</p>
+
+                        <p>Sample size affects precision. Increase the sample from 100 to 1000 people. If 21% say yes, the margin of error shrinks: 21% ± 1%. Larger samples yield better predictions with tighter confidence intervals.</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h3>Key inferential concepts:</h3>
+                        <ul>
+                            <li><strong>Confidence intervals:</strong> A range of values likely to contain the true population parameter</li>
+                            <li><strong>Margin of error:</strong> The range of uncertainty around a sample estimate</li>
+                            <li><strong>Confidence level:</strong> Probability (often 95%) that the interval contains the true value</li>
+                            <li><strong>Hypothesis testing:</strong> Using sample data to test claims about populations</li>
+                        </ul>
+                    </div>
+
+                    <h2>Common Use Cases</h2>
+                    <p>Common use cases for descriptive statistics include summarizing survey responses, creating dashboard reports, and exploring datasets before modeling. Inferential statistics is used in clinical trials, election polling, A/B testing, and quality control where testing every item is impossible.</p>
+
+                    <h2>Limitations</h2>
+                    <p>Limitations exist for both. Descriptive statistics cannot generalize beyond the data at hand. Inferential statistics requires representative samples; biased sampling leads to wrong conclusions regardless of statistical sophistication. Confidence levels are often misunderstood as the probability the true value lies in the interval, but the correct interpretation is about the reliability of the method over repeated sampling.</p>
+
+                    <h2>Summary</h2>
+                    <p><strong>Descriptive statistics summarizes what you have. Inferential statistics estimates what you do not have. Both are essential for working with data.</strong></p>
+
+                    <div class="diagram">
+                        <img src="../../images/DescInferStat2.png" alt="Descriptive and Inferential Statistics Examples" />
+                    </div>
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../statistics.html" class="btn btn-secondary">← Back to Statistics</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

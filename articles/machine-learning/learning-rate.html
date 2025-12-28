@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understanding Learning Rate in Gradient Descent - How alpha affects convergence in machine learning by Wasim Khan">
+    <title>Understanding Learning Rate in Gradient Descent - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .code-block {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        /* Syntax Highlighting */
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .code-block .number {
+            color: #b5cea8;
+        }
+        .code-block .operator {
+            color: #d4d4d4;
+        }
+        .code-block .variable {
+            color: #9cdcfe;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .code-block,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">Understanding Learning Rate in Gradient Descent</h1>
+                <p class="article-date">October 2020</p>
+
+                <div class="article-content">
+                    <div class="highlight-box">
+                        <p>The learning rate (α) is one of the most critical hyperparameters in <a href="gradient-descent.html" style="color: var(--primary-color); text-decoration: none;">gradient descent</a>. It controls how big a step we take when updating our parameters. Choosing the right learning rate determines whether your model converges quickly, slowly, or not at all.</p>
+                    </div>
+
+                    <h2>The Gradient Descent Update Rule</h2>
+                    <p>Recall the gradient descent update formula:</p>
+
+                    <div class="formula">
+                        <strong>w = w - α · ∂J(w)/∂w</strong>
+                    </div>
+
+                    <p>Where:</p>
+                    <ul>
+                        <li><code>w</code> is the parameter being updated</li>
+                        <li><code>α</code> (alpha) is the learning rate</li>
+                        <li><code>∂J(w)/∂w</code> is the gradient (partial derivative of the cost function)</li>
+                    </ul>
+
+                    <p>The learning rate α determines the size of the step we take in the direction of steepest descent.</p>
+
+                    <h2>Three Critical Scenarios</h2>
+
+                    <div class="highlight-box">
+                        <h3>1. Learning Rate Too Small (α ≪ 1)</h3>
+                        <p><strong>What happens:</strong></p>
+                        <ul>
+                            <li>α multiplied by a very small step</li>
+                            <li>The outcome of the process: end up decreasing the <a href="cost-function-squared-error.html" style="color: var(--primary-color); text-decoration: none;">cost J(w)</a> but very slowly</li>
+                            <li>Requires a lot of steps</li>
+                            <li>If α is small, gradient descent will work but will take a lot of time</li>
+                        </ul>
+                        <p><strong>Result:</strong> Slow convergence - the algorithm works correctly but inefficiently.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>2. Learning Rate Too Large (α ≫ 1)</h3>
+                        <p><strong>What happens:</strong></p>
+                        <ul>
+                            <li>Update w with giant step</li>
+                            <li>Cost gets worse for large step</li>
+                            <li>Gradient descent overshoots</li>
+                            <li>Fails to converge or diverges</li>
+                        </ul>
+                        <p><strong>Result:</strong> No convergence - the algorithm bounces around and never settles at the minimum.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>3. Already at Local Minimum</h3>
+                        <p><strong>What happens:</strong></p>
+                        <p>When you're already at a local minimum, the slope (gradient) equals zero. Consider when the current value w = 5 at a local minimum:</p>
+                        <ul>
+                            <li>At the minimum: slope = 0, so <code>∂J(w)/∂w = 0</code></li>
+                            <li>Update becomes: <code>w = w - α · 0</code></li>
+                            <li>Simplified: <code>w = w</code></li>
+                        </ul>
+                        <p><strong>Result:</strong> If you're already at a local minimum, gradient descent leaves w unchanged. This is the desired behavior - the algorithm has found an optimum and stops moving.</p>
+                    </div>
+
+                    <h2>Learning Rate Visualization</h2>
+                    <div class="diagram">
+                        <img src="../../images/learning-rate-diagram-1.jpg" alt="Learning Rate Impact on Gradient Descent" />
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+                            How different learning rates affect convergence: too small (slow), too large (overshooting), and at local minimum (stable)
+                        </p>
+                    </div>
+
+                    <h2>Choosing the Right Learning Rate</h2>
+                    <div class="highlight-box">
+                        <p>Finding the optimal learning rate requires experimentation:</p>
+                        <ul>
+                            <li><strong>Start with common values:</strong> Try 0.001, 0.01, 0.1, 1.0</li>
+                            <li><strong>Plot the cost function:</strong> Monitor J(w) over iterations</li>
+                            <li><strong>Look for steady decrease:</strong> The cost should decrease smoothly</li>
+                            <li><strong>Signs of good α:</strong> Consistent reduction without wild fluctuations</li>
+                            <li><strong>Signs of bad α:</strong> Cost increasing, oscillating, or decreasing too slowly</li>
+                        </ul>
+                    </div>
+
+                    <h2>Advanced Techniques</h2>
+                    <p>Modern optimization algorithms address learning rate challenges:</p>
+                    <ul>
+                        <li><strong>Learning rate schedules:</strong> Decrease α over time (start large, end small)</li>
+                        <li><strong>Adaptive methods:</strong> Adam, RMSprop, AdaGrad adjust α automatically per parameter</li>
+                        <li><strong>Momentum:</strong> Helps overcome small local minima and speeds convergence</li>
+                    </ul>
+
+                    <h2>Key Takeaways</h2>
+                    <div class="highlight-box">
+                        <p><strong>The learning rate controls the speed and success of gradient descent:</strong></p>
+                        <ul>
+                            <li>Too small: slow but steady progress</li>
+                            <li>Too large: unstable and may diverge</li>
+                            <li>Just right: efficient convergence to minimum</li>
+                            <li>At minimum: gradient is zero, updates stop naturally</li>
+                        </ul>
+                        <p>Tuning the learning rate is essential for training effective machine learning models. Always experiment with multiple values and monitor your cost function.</p>
+                    </div>
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../machine-learning.html" class="btn btn-secondary">← Back to Machine Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

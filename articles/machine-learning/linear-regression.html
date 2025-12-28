@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Linear Regression - The foundation of supervised learning by Wasim Akram Khan">
+    <title>Linear Regression - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .code-block {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        /* Syntax Highlighting */
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .code-block .number {
+            color: #b5cea8;
+        }
+        .code-block .operator {
+            color: #d4d4d4;
+        }
+        .code-block .variable {
+            color: #9cdcfe;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .code-block,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">Linear Regression</h1>
+                <p class="article-date">September 2020</p>
+
+                <div class="article-content">
+                    <p>Linear regression is the starting point for understanding supervised learning. It predicts a continuous output by fitting a straight line through data points. Despite its simplicity, it remains widely used in production systems and serves as the foundation for more complex algorithms.</p>
+
+                    <p>The core idea: find the line that best represents the relationship between input features and output. For simple linear regression with one feature, the equation is:</p>
+
+                    <div class="formula">
+                        <strong>Simple Linear Regression:</strong><br><br>
+                        y = wx + b<br><br>
+                        Where:<br>
+                        • y = predicted value<br>
+                        • x = input feature<br>
+                        • w = weight (slope)<br>
+                        • b = bias (y-intercept)
+                    </div>
+
+                    <p>For multiple features, this extends to:</p>
+
+                    <div class="formula">
+                        <strong>Multiple Linear Regression:</strong><br><br>
+                        y = w₁x₁ + w₂x₂ + ... + wₙxₙ + b
+                    </div>
+
+                    <div class="diagram">
+                        <img src="../../images/linear-regression.png" alt="Linear Regression Visualization" />
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+                            Fitting a line through data points to capture the general trend
+                        </p>
+                    </div>
+
+                    <h2>Key Concepts</h2>
+                    <ul>
+                        <li><strong>Weights (coefficients)</strong>: Determine how much each feature influences the prediction. A weight of 2 means the output increases by 2 for every 1 unit increase in that feature.</li>
+                        <li><strong>Bias (intercept)</strong>: The baseline prediction when all features are zero.</li>
+                        <li><strong><a href="cost-function-squared-error.html" style="color: var(--primary-color);">Cost function</a></strong>: Measures prediction error, typically Mean Squared Error (MSE).</li>
+                        <li><strong><a href="gradient-descent.html" style="color: var(--primary-color);">Gradient descent</a></strong>: Optimization algorithm that iteratively adjusts weights to minimize cost.</li>
+                    </ul>
+
+                    <h2>Intuition</h2>
+                    <p>Think of fitting a regression line like placing a ruler through scattered dots on a graph to capture their general trend. The ruler position that minimizes the total distance from all dots represents the best fit. Mathematically, this means minimizing the squared differences between actual values and the line's predictions.</p>
+
+                    <h2>Practical Example</h2>
+                    <p>Consider predicting house prices based on square footage. If the learned equation is <strong>price = 200 × sqft + 50000</strong>, then a 1000 sqft house would be predicted at $250,000. The weight (200) indicates price increases $200 per additional square foot. The bias (50000) represents the base price independent of size.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+X <span class="operator">=</span> np.<span class="function">array</span>([[<span class="number">1000</span>], [<span class="number">1500</span>], [<span class="number">2000</span>], [<span class="number">2500</span>], [<span class="number">3000</span>]])
+y <span class="operator">=</span> np.<span class="function">array</span>([<span class="number">250000</span>, <span class="number">350000</span>, <span class="number">450000</span>, <span class="number">550000</span>, <span class="number">650000</span>])
+
+model <span class="operator">=</span> <span class="function">LinearRegression</span>()
+model.<span class="function">fit</span>(X, y)
+
+<span class="function">print</span>(<span class="string">f"Weight: {model.coef_[0]:.2f}"</span>)      <span class="comment"># 200.00</span>
+<span class="function">print</span>(<span class="string">f"Bias: {model.intercept_:.2f}"</span>)       <span class="comment"># 50000.00</span>
+<span class="function">print</span>(<span class="string">f"Prediction for 1800 sqft: ${model.predict([[1800]])[0]:,.2f}"</span>)</code></pre>
+                    </div>
+
+                    <h2>Common Use Cases</h2>
+                    <p>Common use cases include house price prediction, sales forecasting, risk assessment, trend analysis, and any scenario where you need to predict a numeric value from input features.</p>
+
+                    <h2>Assumptions</h2>
+                    <p>Linear regression makes several assumptions about the data:</p>
+                    <ul>
+                        <li>Linear relationship exists between features and target</li>
+                        <li>Features are not highly correlated with each other (multicollinearity)</li>
+                        <li>Residuals (errors) are normally distributed</li>
+                        <li>Constant variance in errors across predictions (homoscedasticity)</li>
+                        <li>Observations are independent of each other</li>
+                    </ul>
+                    <p>Violating these assumptions leads to unreliable predictions and misleading coefficient interpretations.</p>
+
+                    <h2>Limitations</h2>
+                    <p>Limitations exist beyond assumptions. Linear regression cannot capture nonlinear patterns. A quadratic or exponential relationship will be poorly approximated by a straight line. It is also sensitive to outliers since squaring errors amplifies extreme values. A single outlier can significantly shift the fitted line.</p>
+
+                    <h2>Finding Optimal Weights</h2>
+                    <p>Two approaches exist for finding optimal weights:</p>
+                    <ul>
+                        <li><strong>Closed-form solution (Normal Equation)</strong>: Computes weights directly using matrix operations: w = (XᵀX)⁻¹Xᵀy. This works well for small datasets but becomes computationally expensive with many features.</li>
+                        <li><strong>Gradient descent</strong>: Iteratively adjusts weights and scales better to large datasets.</li>
+                    </ul>
+
+                    <h2>Regularization</h2>
+                    <p>Regularization techniques extend linear regression to handle overfitting:</p>
+                    <ul>
+                        <li><strong>Ridge regression (L2)</strong>: Adds a penalty term that shrinks coefficients toward zero.</li>
+                        <li><strong>Lasso regression (L1)</strong>: Can reduce some coefficients to exactly zero, performing feature selection.</li>
+                    </ul>
+                    <p>These become important when dealing with many features or correlated predictors.</p>
+
+                    <h2>When to Use Linear Regression</h2>
+                    <p>Linear regression works well when relationships are approximately linear, interpretability matters more than maximum accuracy, and the underlying assumptions hold reasonably well. It remains the first algorithm to try for regression problems and often serves as a baseline against which more complex models are compared.</p>
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../machine-learning.html" class="btn btn-secondary">← Back to Machine Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wasim Akram Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Code+Pro:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --text: #2c2c2c;
+      --accent: #c45c3e;
+      --muted: #6b6b6b;
+      --code-bg: #1e1e2e;
+      --code-text: #cdd6f4;
+      --diagram-bg: #f0ebe3;
+      --border: #d4cfc5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 80px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    article {
+      margin-bottom: 80px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    article:last-of-type {
+      border-bottom: none;
+    }
+
+    .article-header {
+      margin-bottom: 32px;
+    }
+
+    .article-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .article-date {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    p {
+      margin-bottom: 1.5em;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .diagram {
+      background: var(--diagram-bg);
+      border-radius: 8px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+
+    .diagram svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .diagram-caption {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 32px 0;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.9rem;
+    }
+
+    pre code {
+      color: var(--code-text);
+      line-height: 1.6;
+    }
+
+    p code {
+      background: rgba(0,0,0,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85em;
+    }
+
+    .highlight-keyword { color: #cba6f7; }
+    .highlight-function { color: #89b4fa; }
+    .highlight-string { color: #a6e3a1; }
+    .highlight-number { color: #fab387; }
+    .highlight-comment { color: #6c7086; font-style: italic; }
+    .highlight-operator { color: #89dceb; }
+
+    .equation {
+      background: var(--diagram-bg);
+      padding: 20px 32px;
+      border-radius: 8px;
+      margin: 24px 0;
+      text-align: center;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .toc {
+      background: var(--diagram-bg);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 60px;
+    }
+
+    .toc h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .toc ul {
+      list-style: none;
+    }
+
+    .toc li {
+      margin-bottom: 8px;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.4rem; }
+      .article-header h2 { font-size: 1.6rem; }
+      body { font-size: 16px; }
+      .container { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Machine Learning Fundamentals</h1>
+      <p>A personal reference for core concepts</p>
+    </header>
+
+    <nav class="toc">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#what-is-ml">What is Machine Learning</a></li>
+        <li><a href="#supervised-unsupervised">Supervised and Unsupervised Learning</a></li>
+        <li><a href="#linear-regression">Linear Regression</a></li>
+        <li><a href="#cost-function">The Cost Function</a></li>
+        <li><a href="#gradient-descent">Gradient Descent</a></li>
+      </ul>
+    </nav>
+
+    <article id="what-is-ml">
+      <div class="article-header">
+        <h2>What is Machine Learning</h2>
+        <div class="article-date">January 20, 2026</div>
+      </div>
+
+      <p>Most software does exactly what you tell it to do. Machine learning flips this. Instead of writing rules, you show the system examples and let it figure out the rules itself.</p>
+
+      <div class="diagram">
+        <svg viewBox="0 0 500 160" width="500" height="160">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#2c2c2c"/>
+            </marker>
+          </defs>
+          <!-- Traditional Programming -->
+          <text x="120" y="30" font-family="Playfair Display" font-size="14" fill="#6b6b6b" text-anchor="middle">Traditional Programming</text>
+          <rect x="20" y="45" width="70" height="35" rx="4" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="55" y="67" font-family="Source Serif 4" font-size="12" fill="#2c2c2c" text-anchor="middle">Data</text>
+          <rect x="110" y="45" width="70" height="35" rx="4" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="145" y="67" font-family="Source Serif 4" font-size="12" fill="#2c2c2c" text-anchor="middle">Rules</text>
+          <line x1="90" y1="62" x2="108" y2="62" stroke="#2c2c2c" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="180" y1="62" x2="198" y2="62" stroke="#2c2c2c" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="200" y="45" width="70" height="35" rx="4" fill="#c45c3e" stroke="#c45c3e" stroke-width="1.5"/>
+          <text x="235" y="67" font-family="Source Serif 4" font-size="12" fill="#fff" text-anchor="middle">Output</text>
+
+          <!-- Machine Learning -->
+          <text x="380" y="30" font-family="Playfair Display" font-size="14" fill="#6b6b6b" text-anchor="middle">Machine Learning</text>
+          <rect x="280" y="45" width="70" height="35" rx="4" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="315" y="67" font-family="Source Serif 4" font-size="12" fill="#2c2c2c" text-anchor="middle">Data</text>
+          <rect x="370" y="45" width="70" height="35" rx="4" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="405" y="67" font-family="Source Serif 4" font-size="12" fill="#2c2c2c" text-anchor="middle">Output</text>
+          <line x1="350" y1="62" x2="368" y2="62" stroke="#2c2c2c" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="405" y1="80" x2="405" y2="98" stroke="#2c2c2c" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <rect x="370" y="100" width="70" height="35" rx="4" fill="#c45c3e" stroke="#c45c3e" stroke-width="1.5"/>
+          <text x="405" y="122" font-family="Source Serif 4" font-size="12" fill="#fff" text-anchor="middle">Rules</text>
+        </svg>
+        <div class="diagram-caption">Traditional programming: rules produce output. ML: data and output produce rules.</div>
+      </div>
+
+      <p>The basic idea: give an algorithm data, let it find patterns, then use those patterns to make predictions on new data. A spam filter doesn't have hardcoded rules about Nigerian princes. It learned from millions of emails what spam looks like.</p>
+
+      <p>Three things make ML work: data, algorithms and compute. Data is the raw material. Algorithms are the recipes for finding patterns. Compute is the horsepower to run the recipes at scale.</p>
+
+      <p>The practical test: can you write down the rules? If you can specify exactly when an email is spam or a tumor is malignant, use regular programming. If you can't, but you have labeled examples, ML might work.</p>
+
+      <p>One gotcha: ML isn't magic. It finds patterns in historical data. If your data is biased, your model is biased. If the future looks different from the past, your model breaks.</p>
+    </article>
+
+    <article id="supervised-unsupervised">
+      <div class="article-header">
+        <h2>Supervised and Unsupervised Learning</h2>
+        <div class="article-date">January 20, 2026</div>
+      </div>
+
+      <p>Machine learning splits into two main camps based on whether you have labels.</p>
+
+      <p>Supervised learning means you have input-output pairs. You show the algorithm houses with their sale prices and it learns to predict prices for new houses. The algorithm is "supervised" because you're telling it the right answers during training.</p>
+
+      <div class="diagram">
+        <svg viewBox="0 0 500 280" width="500" height="280">
+          <!-- Supervised Section -->
+          <text x="130" y="25" font-family="Playfair Display" font-size="16" font-weight="600" fill="#2c2c2c" text-anchor="middle">Supervised Learning</text>
+          <text x="130" y="45" font-family="Source Serif 4" font-size="11" fill="#6b6b6b" text-anchor="middle">(has labels)</text>
+          
+          <!-- Regression -->
+          <rect x="30" y="65" width="90" height="80" rx="6" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="75" y="90" font-family="Source Serif 4" font-size="13" font-weight="500" fill="#2c2c2c" text-anchor="middle">Regression</text>
+          <text x="75" y="110" font-family="Source Serif 4" font-size="10" fill="#6b6b6b" text-anchor="middle">Continuous output</text>
+          <text x="75" y="130" font-family="Source Code Pro" font-size="9" fill="#c45c3e" text-anchor="middle">→ prices, temps</text>
+          
+          <!-- Classification -->
+          <rect x="140" y="65" width="90" height="80" rx="6" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="185" y="90" font-family="Source Serif 4" font-size="13" font-weight="500" fill="#2c2c2c" text-anchor="middle">Classification</text>
+          <text x="185" y="110" font-family="Source Serif 4" font-size="10" fill="#6b6b6b" text-anchor="middle">Discrete categories</text>
+          <text x="185" y="130" font-family="Source Code Pro" font-size="9" fill="#c45c3e" text-anchor="middle">→ spam, tumor type</text>
+
+          <!-- Unsupervised Section -->
+          <text x="370" y="25" font-family="Playfair Display" font-size="16" font-weight="600" fill="#2c2c2c" text-anchor="middle">Unsupervised Learning</text>
+          <text x="370" y="45" font-family="Source Serif 4" font-size="11" fill="#6b6b6b" text-anchor="middle">(no labels)</text>
+          
+          <!-- Clustering -->
+          <rect x="270" y="65" width="90" height="65" rx="6" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="315" y="90" font-family="Source Serif 4" font-size="12" font-weight="500" fill="#2c2c2c" text-anchor="middle">Clustering</text>
+          <text x="315" y="110" font-family="Source Code Pro" font-size="9" fill="#c45c3e" text-anchor="middle">→ customer segments</text>
+          
+          <!-- Dim Reduction -->
+          <rect x="380" y="65" width="90" height="65" rx="6" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="425" y="85" font-family="Source Serif 4" font-size="12" font-weight="500" fill="#2c2c2c" text-anchor="middle">Dimensionality</text>
+          <text x="425" y="100" font-family="Source Serif 4" font-size="12" font-weight="500" fill="#2c2c2c" text-anchor="middle">Reduction</text>
+          <text x="425" y="120" font-family="Source Code Pro" font-size="9" fill="#c45c3e" text-anchor="middle">→ PCA, compression</text>
+          
+          <!-- Anomaly -->
+          <rect x="325" y="145" width="90" height="65" rx="6" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <text x="370" y="170" font-family="Source Serif 4" font-size="12" font-weight="500" fill="#2c2c2c" text-anchor="middle">Anomaly</text>
+          <text x="370" y="185" font-family="Source Serif 4" font-size="12" font-weight="500" fill="#2c2c2c" text-anchor="middle">Detection</text>
+          <text x="370" y="200" font-family="Source Code Pro" font-size="9" fill="#c45c3e" text-anchor="middle">→ fraud, defects</text>
+
+          <!-- Divider -->
+          <line x1="250" y1="20" x2="250" y2="220" stroke="#d4cfc5" stroke-width="1" stroke-dasharray="4,4"/>
+        </svg>
+        <div class="diagram-caption">The two main paradigms of machine learning and their subtypes.</div>
+      </div>
+
+      <p>Supervised learning has two flavors. Regression predicts continuous values: house prices, stock returns, temperature. Classification predicts categories: spam or not spam, tumor type, which digit (0-9) an image shows.</p>
+
+      <p>Unsupervised learning has no labels. You give the algorithm data and ask it to find structure. Nobody tells it what to look for.</p>
+
+      <p>Clustering groups similar things together. Customer segmentation is the classic example. Dimensionality reduction compresses data while preserving important information. Anomaly detection finds outliers—credit card fraud, manufacturing defects, network intrusions.</p>
+
+      <p>The practical distinction: if you have labeled data and want predictions, use supervised. If you want to explore structure in unlabeled data, use unsupervised. Most real-world ML is supervised. Labels are expensive but prediction is valuable.</p>
+    </article>
+
+    <article id="linear-regression">
+      <div class="article-header">
+        <h2>Linear Regression</h2>
+        <div class="article-date">January 20, 2026</div>
+      </div>
+
+      <p>Linear regression is the simplest supervised learning algorithm. It fits a straight line through your data.</p>
+
+      <div class="equation">y = wx + b</div>
+
+      <p>You have an input x, a weight w and a bias b. The output y is your prediction. With multiple inputs, it becomes y = w₁x₁ + w₂x₂ + ... + b.</p>
+
+      <div class="diagram">
+        <svg viewBox="0 0 400 220" width="400" height="220">
+          <!-- Axes -->
+          <line x1="50" y1="180" x2="370" y2="180" stroke="#2c2c2c" stroke-width="1.5"/>
+          <line x1="50" y1="180" x2="50" y2="30" stroke="#2c2c2c" stroke-width="1.5"/>
+          
+          <!-- Axis labels -->
+          <text x="210" y="210" font-family="Source Serif 4" font-size="12" fill="#6b6b6b" text-anchor="middle">Square Footage</text>
+          <text x="25" y="105" font-family="Source Serif 4" font-size="12" fill="#6b6b6b" text-anchor="middle" transform="rotate(-90, 25, 105)">Price ($)</text>
+          
+          <!-- Data points -->
+          <circle cx="80" cy="155" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="110" cy="140" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="140" cy="125" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="170" cy="135" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="200" cy="105" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="230" cy="95" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="260" cy="80" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="290" cy="85" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="320" cy="60" r="5" fill="#c45c3e" opacity="0.7"/>
+          <circle cx="350" cy="55" r="5" fill="#c45c3e" opacity="0.7"/>
+          
+          <!-- Regression line -->
+          <line x1="60" y1="165" x2="360" y2="45" stroke="#2c2c2c" stroke-width="2"/>
+          
+          <!-- Equation on chart -->
+          <text x="280" y="150" font-family="Source Code Pro" font-size="11" fill="#2c2c2c">ŷ = 200x + 50000</text>
+        </svg>
+        <div class="diagram-caption">Linear regression fits a line that minimizes the distance to all data points.</div>
+      </div>
+
+      <p>A concrete example: predicting house prices from square footage. If w = 200 and b = 50000, the model predicts a 2000 sqft house costs 200(2000) + 50000 = $450,000.</p>
+
+<pre><code><span class="highlight-keyword">import</span> numpy <span class="highlight-keyword">as</span> np
+
+<span class="highlight-comment"># Simple linear regression prediction</span>
+<span class="highlight-keyword">def</span> <span class="highlight-function">predict</span>(x, w, b):
+    <span class="highlight-keyword">return</span> w <span class="highlight-operator">*</span> x <span class="highlight-operator">+</span> b
+
+<span class="highlight-comment"># Example: house price prediction</span>
+w <span class="highlight-operator">=</span> <span class="highlight-number">200</span>      <span class="highlight-comment"># $200 per sqft</span>
+b <span class="highlight-operator">=</span> <span class="highlight-number">50000</span>   <span class="highlight-comment"># base price</span>
+sqft <span class="highlight-operator">=</span> <span class="highlight-number">2000</span>
+
+price <span class="highlight-operator">=</span> predict(sqft, w, b)
+<span class="highlight-function">print</span>(<span class="highlight-string">f"Predicted price: $</span>{price:,}<span class="highlight-string">"</span>)
+<span class="highlight-comment"># Output: Predicted price: $450,000</span></code></pre>
+
+      <p>Linear regression assumes a linear relationship. If house prices actually follow a curve, a straight line won't fit well. You can add polynomial features (x², x³) to capture curves, but then you're really doing polynomial regression.</p>
+
+      <p>The practical value: it's interpretable. Each weight tells you how much that feature matters. A weight of 200 on square footage means each additional square foot adds $200 to the predicted price. Linear regression is rarely the final answer, but it's always the first thing to try.</p>
+    </article>
+
+    <article id="cost-function">
+      <div class="article-header">
+        <h2>The Cost Function</h2>
+        <div class="article-date">January 20, 2026</div>
+      </div>
+
+      <p>A cost function measures how wrong your model is. Training means minimizing this function.</p>
+
+      <div class="equation">J(w,b) = (1/2m) × Σ(ŷᵢ - yᵢ)²</div>
+
+      <p>For each training example, compute the prediction ŷ, subtract the actual value y, square the difference, sum them all up and divide by 2m (where m is the number of examples).</p>
+
+      <div class="diagram">
+        <svg viewBox="0 0 400 200" width="400" height="200">
+          <!-- Axes -->
+          <line x1="50" y1="170" x2="350" y2="170" stroke="#2c2c2c" stroke-width="1.5"/>
+          <line x1="50" y1="170" x2="50" y2="30" stroke="#2c2c2c" stroke-width="1.5"/>
+          
+          <!-- Axis labels -->
+          <text x="200" y="195" font-family="Source Serif 4" font-size="12" fill="#6b6b6b" text-anchor="middle">w (weight parameter)</text>
+          <text x="25" y="100" font-family="Source Serif 4" font-size="12" fill="#6b6b6b" text-anchor="middle" transform="rotate(-90, 25, 100)">J(w) Cost</text>
+          
+          <!-- Convex curve -->
+          <path d="M 70 50 Q 120 160, 200 165 Q 280 160, 330 50" fill="none" stroke="#2c2c2c" stroke-width="2"/>
+          
+          <!-- Minimum point -->
+          <circle cx="200" cy="165" r="6" fill="#c45c3e"/>
+          <text x="200" y="155" font-family="Source Code Pro" font-size="10" fill="#c45c3e" text-anchor="middle">minimum</text>
+          
+          <!-- Gradient arrows -->
+          <line x1="100" y1="120" x2="130" y2="145" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="300" y1="120" x2="270" y2="145" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#arrow)"/>
+        </svg>
+        <div class="diagram-caption">The cost function forms a convex bowl. Training finds the minimum.</div>
+      </div>
+
+      <p>Why squares? Three reasons. First, squaring makes all errors positive. An error of -10 and +10 both contribute equally. Second, squaring penalizes big errors more than small ones. An error of 10 costs 100, but an error of 2 costs only 4. Third, squared error is mathematically convenient because its derivative is simple.</p>
+
+<pre><code><span class="highlight-keyword">import</span> numpy <span class="highlight-keyword">as</span> np
+
+<span class="highlight-keyword">def</span> <span class="highlight-function">compute_cost</span>(X, y, w, b):
+    <span class="highlight-string">"""
+    Compute squared error cost function.
+    X: features (m examples)
+    y: actual values
+    w, b: model parameters
+    """</span>
+    m <span class="highlight-operator">=</span> <span class="highlight-function">len</span>(y)
+    predictions <span class="highlight-operator">=</span> w <span class="highlight-operator">*</span> X <span class="highlight-operator">+</span> b
+    errors <span class="highlight-operator">=</span> predictions <span class="highlight-operator">-</span> y
+    cost <span class="highlight-operator">=</span> (<span class="highlight-number">1</span> <span class="highlight-operator">/</span> (<span class="highlight-number">2</span> <span class="highlight-operator">*</span> m)) <span class="highlight-operator">*</span> np.<span class="highlight-function">sum</span>(errors<span class="highlight-operator">**</span><span class="highlight-number">2</span>)
+    <span class="highlight-keyword">return</span> cost
+
+<span class="highlight-comment"># Example</span>
+X <span class="highlight-operator">=</span> np.<span class="highlight-function">array</span>([<span class="highlight-number">1000</span>, <span class="highlight-number">1500</span>, <span class="highlight-number">2000</span>])  <span class="highlight-comment"># sqft</span>
+y <span class="highlight-operator">=</span> np.<span class="highlight-function">array</span>([<span class="highlight-number">310000</span>, <span class="highlight-number">390000</span>, <span class="highlight-number">450000</span>])  <span class="highlight-comment"># actual prices</span>
+cost <span class="highlight-operator">=</span> <span class="highlight-function">compute_cost</span>(X, y, w<span class="highlight-operator">=</span><span class="highlight-number">200</span>, b<span class="highlight-operator">=</span><span class="highlight-number">50000</span>)
+<span class="highlight-function">print</span>(<span class="highlight-string">f"Cost: </span>{cost:,.0f}<span class="highlight-string">"</span>)</code></pre>
+
+      <p>J(w,b) defines a surface over the parameter space. Each point (w,b) has a cost. Training finds the lowest point on this surface. For linear regression with squared error, this surface is convex, meaning there's one global minimum. The cost function is your compass. It tells you which direction makes the model better.</p>
+    </article>
+
+    <article id="gradient-descent">
+      <div class="article-header">
+        <h2>Gradient Descent</h2>
+        <div class="article-date">January 20, 2026</div>
+      </div>
+
+      <p>Gradient descent finds the minimum of a function by repeatedly taking small steps downhill.</p>
+
+      <p>The algorithm: start with random parameters. Compute the gradient (slope) of the cost function. Take a step in the opposite direction. Repeat until the cost stops decreasing.</p>
+
+      <div class="equation">w = w - α × ∂J/∂w</div>
+
+      <p>Alpha (α) is the learning rate, which controls step size. The partial derivative ∂J/∂w tells you which direction is uphill. You go the other way.</p>
+
+      <div class="diagram">
+        <svg viewBox="0 0 400 220" width="400" height="220">
+          <!-- Contour plot simulation -->
+          <ellipse cx="200" cy="120" rx="150" ry="80" fill="none" stroke="#d4cfc5" stroke-width="1"/>
+          <ellipse cx="200" cy="120" rx="120" ry="60" fill="none" stroke="#d4cfc5" stroke-width="1"/>
+          <ellipse cx="200" cy="120" rx="90" ry="45" fill="none" stroke="#d4cfc5" stroke-width="1"/>
+          <ellipse cx="200" cy="120" rx="60" ry="30" fill="none" stroke="#d4cfc5" stroke-width="1"/>
+          <ellipse cx="200" cy="120" rx="30" ry="15" fill="none" stroke="#d4cfc5" stroke-width="1"/>
+          
+          <!-- Gradient descent path -->
+          <circle cx="320" cy="90" r="5" fill="#c45c3e"/>
+          <line x1="320" y1="90" x2="280" y2="100" stroke="#c45c3e" stroke-width="2"/>
+          <circle cx="280" cy="100" r="4" fill="#c45c3e"/>
+          <line x1="280" y1="100" x2="250" y2="108" stroke="#c45c3e" stroke-width="2"/>
+          <circle cx="250" cy="108" r="4" fill="#c45c3e"/>
+          <line x1="250" y1="108" x2="225" y2="114" stroke="#c45c3e" stroke-width="2"/>
+          <circle cx="225" cy="114" r="4" fill="#c45c3e"/>
+          <line x1="225" y1="114" x2="208" y2="118" stroke="#c45c3e" stroke-width="2"/>
+          <circle cx="208" cy="118" r="3" fill="#c45c3e"/>
+          
+          <!-- Minimum -->
+          <circle cx="200" cy="120" r="6" fill="#2c2c2c"/>
+          <text x="200" y="145" font-family="Source Code Pro" font-size="10" fill="#2c2c2c" text-anchor="middle">minimum</text>
+          
+          <!-- Labels -->
+          <text x="320" y="75" font-family="Source Code Pro" font-size="10" fill="#c45c3e" text-anchor="middle">start</text>
+          <text x="200" y="200" font-family="Source Serif 4" font-size="12" fill="#6b6b6b" text-anchor="middle">Contour plot of cost function J(w,b)</text>
+        </svg>
+        <div class="diagram-caption">Gradient descent follows the steepest path downhill to the minimum.</div>
+      </div>
+
+<pre><code><span class="highlight-keyword">def</span> <span class="highlight-function">gradient_descent</span>(X, y, w, b, alpha, iterations):
+    <span class="highlight-string">"""
+    Run gradient descent to learn w and b.
+    alpha: learning rate
+    """</span>
+    m <span class="highlight-operator">=</span> <span class="highlight-function">len</span>(y)
+    
+    <span class="highlight-keyword">for</span> i <span class="highlight-keyword">in</span> <span class="highlight-function">range</span>(iterations):
+        <span class="highlight-comment"># Predictions with current parameters</span>
+        predictions <span class="highlight-operator">=</span> w <span class="highlight-operator">*</span> X <span class="highlight-operator">+</span> b
+        
+        <span class="highlight-comment"># Compute gradients</span>
+        dw <span class="highlight-operator">=</span> (<span class="highlight-number">1</span><span class="highlight-operator">/</span>m) <span class="highlight-operator">*</span> np.<span class="highlight-function">sum</span>((predictions <span class="highlight-operator">-</span> y) <span class="highlight-operator">*</span> X)
+        db <span class="highlight-operator">=</span> (<span class="highlight-number">1</span><span class="highlight-operator">/</span>m) <span class="highlight-operator">*</span> np.<span class="highlight-function">sum</span>(predictions <span class="highlight-operator">-</span> y)
+        
+        <span class="highlight-comment"># Update parameters (simultaneous update)</span>
+        w <span class="highlight-operator">=</span> w <span class="highlight-operator">-</span> alpha <span class="highlight-operator">*</span> dw
+        b <span class="highlight-operator">=</span> b <span class="highlight-operator">-</span> alpha <span class="highlight-operator">*</span> db
+    
+    <span class="highlight-keyword">return</span> w, b
+
+<span class="highlight-comment"># Train the model</span>
+w_final, b_final <span class="highlight-operator">=</span> <span class="highlight-function">gradient_descent</span>(
+    X, y, w<span class="highlight-operator">=</span><span class="highlight-number">0</span>, b<span class="highlight-operator">=</span><span class="highlight-number">0</span>, alpha<span class="highlight-operator">=</span><span class="highlight-number">0.0001</span>, iterations<span class="highlight-operator">=</span><span class="highlight-number">1000</span>
+)</code></pre>
+
+      <p>The learning rate matters. Too small and training takes forever. Too large and you overshoot the minimum, bouncing around or diverging entirely. Common starting values: 0.01, 0.001.</p>
+
+      <p>Batch gradient descent uses all training examples to compute each update. Stochastic gradient descent (SGD) uses one example at a time. Mini-batch uses small groups, typically 32-256 examples. Mini-batch is the standard choice: faster than batch, less noisy than pure SGD.</p>
+
+      <p>The visual intuition: imagine a ball rolling down a bowl. Gradient descent is that ball. The gradient tells it which way is down. The learning rate determines how big each roll is.</p>
+    </article>
+
+    <footer>
+      <p>Personal reference notes · January 2026</p>
+    </footer>
+  </div>
+</body>
+</html>

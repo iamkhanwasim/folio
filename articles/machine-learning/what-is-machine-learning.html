@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What is Machine Learning? - Understanding the fundamentals of ML by Wasim Akram Khan">
+    <title>What is Machine Learning? - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        .concept-box {
+            background: rgba(var(--primary-rgb), 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .concept-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .concept-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .concept-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .concept-box li {
+            margin-bottom: 0.5rem;
+        }
+        .concept-box li:last-child {
+            margin-bottom: 0;
+        }
+        .ml-type {
+            margin-bottom: 1.5rem;
+        }
+        .ml-type h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .concept-box,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + p,
+        .article-content h2 + ul {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">What is Machine Learning?</h1>
+                <p class="article-date">September 2020</p>
+
+                <div class="article-content">
+                    <p>Machine learning is a subset of artificial intelligence where computers learn patterns from data instead of being explicitly programmed. Traditional programming requires writing rules for every scenario. Machine learning flips this: you provide data and expected outputs and the algorithm figures out the rules.</p>
+
+                    <p>This matters because many problems are too complex for hand-coded rules. Recognizing faces, translating languages, detecting fraud - these tasks have too many variables to define manually.</p>
+
+                    <div class="diagram">
+                        <img src="../../images/machine-learning.png" alt="Machine Learning Visualization" />
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+                            How machine learning differs from traditional programming
+                        </p>
+                    </div>
+
+                    <h2>Core Concepts</h2>
+                    <div class="concept-box">
+                        <ul>
+                            <li><strong>Training data:</strong> The historical examples the algorithm learns from</li>
+                            <li><strong>Features:</strong> Input variables used to make predictions (age, income, location)</li>
+                            <li><strong>Labels:</strong> The target variable you want to predict (price, category, yes/no)</li>
+                            <li><strong>Model:</strong> The mathematical representation learned from data</li>
+                            <li><strong>Inference:</strong> Using the trained model to make predictions on new data</li>
+                        </ul>
+                    </div>
+
+                    <h2>Three Main Types of Machine Learning</h2>
+
+                    <div class="highlight-box">
+                        <div class="ml-type">
+                            <h3><a href="supervised-unsupervised-learning.html" style="color: var(--primary-color); text-decoration: none;">Supervised Learning</a></h3>
+                            <p>Training data includes labels. The algorithm learns to map inputs to known outputs.</p>
+                            <p><strong>Examples:</strong> spam detection, price prediction</p>
+                        </div>
+
+                        <div class="ml-type">
+                            <h3><a href="supervised-unsupervised-learning.html" style="color: var(--primary-color); text-decoration: none;">Unsupervised Learning</a></h3>
+                            <p>No labels provided. The algorithm finds hidden patterns or groupings.</p>
+                            <p><strong>Examples:</strong> customer segmentation, anomaly detection</p>
+                        </div>
+
+                        <div class="ml-type">
+                            <h3>Reinforcement Learning</h3>
+                            <p>An agent learns by taking actions and receiving rewards or penalties.</p>
+                            <p><strong>Examples:</strong> game playing, robotics</p>
+                        </div>
+                    </div>
+
+                    <h2>A Practical Analogy</h2>
+                    <div class="concept-box">
+                        <ul>
+                            <li><strong>Supervised learning</strong> is like studying with an answer key</li>
+                            <li><strong>Unsupervised learning</strong> is like sorting a pile of unlabeled photos into groups</li>
+                            <li><strong>Reinforcement learning</strong> is like learning to ride a bike through trial and error</li>
+                        </ul>
+                    </div>
+
+                    <h2>Common Use Cases</h2>
+                    <p>Machine learning powers many modern applications:</p>
+                    <ul>
+                        <li>Recommendation systems</li>
+                        <li>Image classification</li>
+                        <li>Natural language processing</li>
+                        <li>Predictive maintenance</li>
+                        <li>Medical diagnosis</li>
+                    </ul>
+
+                    <h2>Limitations</h2>
+                    <p>ML models have important limitations to consider:</p>
+                    <ul>
+                        <li>They need substantial quality data</li>
+                        <li>They can inherit biases present in training data</li>
+                        <li>They struggle with edge cases not represented in training</li>
+                        <li>Models often lack interpretability - they predict outcomes but don't explain reasoning</li>
+                    </ul>
+
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../machine-learning.html" class="btn btn-secondary">← Back to Machine Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wasim Akram Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

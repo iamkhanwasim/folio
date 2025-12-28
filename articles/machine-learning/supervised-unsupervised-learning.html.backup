@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Supervised and Unsupervised Learning - Key ML paradigms by Wasim Akram Khan">
+    <title>Supervised and Unsupervised Learning - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            text-align: center;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .comparison-table {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-collapse: collapse;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+        .comparison-table th {
+            background: var(--card-bg);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">Supervised and Unsupervised Learning</h1>
+                <div class="article-content">
+                    <p>Machine learning splits into two main camps based on whether you have labels.</p>
+
+                    <div class="diagram">
+                        <div style="max-width: 800px; margin: 0 auto;">
+                            <div style="text-align: center; padding: 1rem; background: var(--primary-color); color: white; border-radius: 8px; font-weight: 700; margin-bottom: 2rem;">
+                                Machine Learning
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                                <div>
+                                    <div style="text-align: center; padding: 1.5rem; background: rgba(66, 133, 244, 0.2); border-radius: 8px; border: 2px solid #4285f4; margin-bottom: 1rem;">
+                                        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Supervised Learning</div>
+                                        <div style="font-size: 0.9rem; opacity: 0.8;">(Has Labels)</div>
+                                    </div>
+                                    <div style="display: flex; gap: 1rem;">
+                                        <div style="flex: 1; text-align: center; padding: 1rem; background: rgba(66, 133, 244, 0.1); border-radius: 8px; border: 1px solid #4285f4;">
+                                            <strong>Regression</strong>
+                                            <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">Continuous</div>
+                                        </div>
+                                        <div style="flex: 1; text-align: center; padding: 1rem; background: rgba(66, 133, 244, 0.1); border-radius: 8px; border: 1px solid #4285f4;">
+                                            <strong>Classification</strong>
+                                            <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">Categories</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="text-align: center; padding: 1.5rem; background: rgba(52, 168, 83, 0.2); border-radius: 8px; border: 2px solid #34a853; margin-bottom: 1rem;">
+                                        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Unsupervised Learning</div>
+                                        <div style="font-size: 0.9rem; opacity: 0.8;">(No Labels)</div>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                        <div style="text-align: center; padding: 0.8rem; background: rgba(52, 168, 83, 0.1); border-radius: 8px; border: 1px solid #34a853;">
+                                            <strong>Clustering</strong>
+                                        </div>
+                                        <div style="text-align: center; padding: 0.8rem; background: rgba(52, 168, 83, 0.1); border-radius: 8px; border: 1px solid #34a853;">
+                                            <strong>Dimensionality Reduction</strong>
+                                        </div>
+                                        <div style="text-align: center; padding: 0.8rem; background: rgba(52, 168, 83, 0.1); border-radius: 8px; border: 1px solid #34a853;">
+                                            <strong>Anomaly Detection</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Supervised Learning</h2>
+                    <p>Supervised learning means you have <strong>input-output pairs</strong>. You show the algorithm houses with their sale prices and it learns to predict prices for new houses. The algorithm is "supervised" because you're telling it the right answers during training.</p>
+
+                    <div class="highlight-box">
+                        <h3>Two Flavors of Supervised Learning:</h3>
+                        <ul>
+                            <li><strong>Regression:</strong> Predicts continuous values (house prices, stock returns, temperature)</li>
+                            <li><strong>Classification:</strong> Predicts categories (spam or not spam, tumor type, which digit 0-9)</li>
+                        </ul>
+                    </div>
+
+                    <div class="diagram">
+                        <h3 style="text-align: center; margin-bottom: 1.5rem;">Supervised Learning Example: House Price Prediction</h3>
+                        <div style="max-width: 500px; margin: 0 auto;">
+                            <div style="background: rgba(66, 133, 244, 0.1); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                                <div style="font-weight: 700; margin-bottom: 1rem; color: var(--primary-color);">Training Data:</div>
+                                <div style="display: grid; grid-template-columns: auto auto auto; gap: 1rem; align-items: center; justify-content: center;">
+                                    <div style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 4px;">1500 sqft</div>
+                                    <div style="font-size: 1.5rem;">→</div>
+                                    <div style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 4px;">$300,000</div>
+                                    <div style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 4px;">2000 sqft</div>
+                                    <div style="font-size: 1.5rem;">→</div>
+                                    <div style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 4px;">$400,000</div>
+                                    <div style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 4px;">2500 sqft</div>
+                                    <div style="font-size: 1.5rem;">→</div>
+                                    <div style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 4px;">$500,000</div>
+                                </div>
+                            </div>
+                            <div style="text-align: center; padding: 1rem; font-size: 1.2rem; color: var(--primary-color); margin-bottom: 1.5rem;">
+                                ⚙️ Algorithm learns the pattern...
+                            </div>
+                            <div style="background: rgba(52, 168, 83, 0.2); padding: 1.5rem; border-radius: 8px; border: 2px solid #34a853;">
+                                <div style="font-weight: 700; margin-bottom: 1rem; color: #34a853;">New Input:</div>
+                                <div style="display: grid; grid-template-columns: auto auto auto; gap: 1rem; align-items: center; justify-content: center;">
+                                    <div style="padding: 0.5rem 1rem; background: var(--card-bg); border-radius: 4px;">1800 sqft</div>
+                                    <div style="font-size: 1.5rem;">→</div>
+                                    <div style="padding: 0.5rem 1rem; background: rgba(52, 168, 83, 0.3); border-radius: 4px; font-weight: 700;">Predicted: $360,000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Unsupervised Learning</h2>
+                    <p>Unsupervised learning has <strong>no labels</strong>. You give the algorithm data and ask it to find structure. Nobody tells it what to look for.</p>
+
+                    <h3>Clustering</h3>
+                    <p>Groups similar things together. Customer segmentation is the classic example. You don't know in advance what segments exist. The algorithm finds natural groupings based on behavior patterns.</p>
+
+                    <div class="diagram">
+                        <h3 style="text-align: center; margin-bottom: 1.5rem;">Customer Clustering Example</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 700px; margin: 0 auto;">
+                            <div style="text-align: center;">
+                                <div style="font-weight: 700; margin-bottom: 1rem;">Raw Data Points</div>
+                                <div style="padding: 2rem; background: var(--card-bg); border-radius: 8px; position: relative; height: 150px;">
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 20%; left: 15%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 25%; left: 25%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 40%; left: 20%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 45%; left: 30%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 30%; left: 55%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 50%; left: 60%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 20%; left: 75%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 35%; left: 85%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 60%; left: 25%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 70%; left: 18%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 65%; left: 65%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #888; border-radius: 50%; top: 75%; left: 80%;"></div>
+                                </div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-weight: 700; margin-bottom: 1rem;">After Clustering</div>
+                                <div style="padding: 2rem; background: var(--card-bg); border-radius: 8px; position: relative; height: 150px;">
+                                    <!-- Group A (blue) -->
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #4285f4; border-radius: 50%; top: 20%; left: 15%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #4285f4; border-radius: 50%; top: 25%; left: 25%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #4285f4; border-radius: 50%; top: 40%; left: 20%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #4285f4; border-radius: 50%; top: 45%; left: 30%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #4285f4; border-radius: 50%; top: 60%; left: 25%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #4285f4; border-radius: 50%; top: 70%; left: 18%;"></div>
+                                    <!-- Group B (green) -->
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #34a853; border-radius: 50%; top: 30%; left: 55%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #34a853; border-radius: 50%; top: 50%; left: 60%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #34a853; border-radius: 50%; top: 65%; left: 65%;"></div>
+                                    <!-- Group C (red) -->
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #ea4335; border-radius: 50%; top: 20%; left: 75%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #ea4335; border-radius: 50%; top: 35%; left: 85%;"></div>
+                                    <div style="position: absolute; width: 8px; height: 8px; background: #ea4335; border-radius: 50%; top: 75%; left: 80%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; background: #4285f4; border-radius: 50%;"></div>
+                                <span>Group A: Budget shoppers</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; background: #34a853; border-radius: 50%;"></div>
+                                <span>Group B: Premium buyers</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; background: #ea4335; border-radius: 50%;"></div>
+                                <span>Group C: Occasional customers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Dimensionality Reduction</h3>
+                    <p>Compresses data while preserving important information. If you have 1000 features but most are redundant, PCA might reduce them to 50 while keeping 95% of the variance. This helps with visualization and speeds up other algorithms.</p>
+
+                    <div class="formula">
+                        <strong>Dimensionality Reduction Concept:</strong><br><br>
+                        Original: 1000 features → 1000 dimensions<br>
+                        After PCA: 50 features → 50 dimensions<br>
+                        Information retained: 95%
+                    </div>
+
+                    <h3>Anomaly Detection</h3>
+                    <p>Finds outliers. Credit card fraud, manufacturing defects, network intrusions. The model learns what "normal" looks like, then flags anything that doesn't fit.</p>
+
+                    <div class="diagram">
+                        <h3 style="text-align: center; margin-bottom: 1.5rem;">Anomaly Detection</h3>
+                        <div style="max-width: 500px; margin: 0 auto; padding: 2rem; background: var(--card-bg); border-radius: 8px; position: relative; height: 200px;">
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 20%; left: 15%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 25%; left: 25%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 30%; left: 35%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 22%; left: 45%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 28%; left: 55%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 26%; left: 65%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 50%; left: 20%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 48%; left: 30%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 52%; left: 40%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 47%; left: 50%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 51%; left: 60%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 75%; left: 25%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 72%; left: 35%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 78%; left: 45%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 74%; left: 55%;"></div>
+                            <div style="position: absolute; width: 6px; height: 6px; background: #34a853; border-radius: 50%; top: 76%; left: 65%;"></div>
+                            <!-- Anomaly -->
+                            <div style="position: absolute; width: 14px; height: 14px; background: #ea4335; border-radius: 50%; top: 50%; left: 75%; border: 3px solid #ff6b6b; animation: pulse 2s ease-in-out infinite;"></div>
+                            <div style="position: absolute; top: 48%; left: 85%; padding: 0.3rem 0.8rem; background: #ea4335; color: white; border-radius: 4px; font-size: 0.8rem; font-weight: 700;">Anomaly!</div>
+                        </div>
+                        <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; background: #34a853; border-radius: 50%;"></div>
+                                <span>Normal Pattern</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 14px; height: 14px; background: #ea4335; border-radius: 50%; border: 2px solid #ff6b6b;"></div>
+                                <span>Anomaly (Flagged!)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Comparison</h2>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Supervised Learning</th>
+                            <th>Unsupervised Learning</th>
+                        </tr>
+                        <tr>
+                            <td>Labels Required</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Goal</td>
+                            <td>Predict outputs</td>
+                            <td>Find structure/patterns</td>
+                        </tr>
+                        <tr>
+                            <td>Common Use</td>
+                            <td>Classification, Regression</td>
+                            <td>Clustering, Compression</td>
+                        </tr>
+                        <tr>
+                            <td>Examples</td>
+                            <td>Spam detection, Price prediction</td>
+                            <td>Customer segmentation, Anomaly detection</td>
+                        </tr>
+                    </table>
+
+                    <div class="highlight-box">
+                        <h3>Practical Distinction:</h3>
+                        <p>If you have labeled data and want predictions, use <strong>supervised learning</strong>. If you want to explore structure in unlabeled data, use <strong>unsupervised learning</strong>.</p>
+                        <p><strong>Note:</strong> Most real-world ML is supervised. Labels are expensive but prediction is valuable.</p>
+                    </div>
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../machine-learning.html" class="btn btn-secondary">← Back to Machine Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wasim Akram Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

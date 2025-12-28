@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Supervised and Unsupervised Learning - Understanding the fundamental paradigms of ML by Wasim Akram Khan">
+    <title>Supervised and Unsupervised Learning - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        .comparison-box {
+            background: rgba(var(--primary-rgb), 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .comparison-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .comparison-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .comparison-box li {
+            margin-bottom: 0.5rem;
+        }
+        .comparison-box li:last-child {
+            margin-bottom: 0;
+        }
+        .comparison-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .comparison-box p:last-child {
+            margin-bottom: 0;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .comparison-box,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + p,
+        .article-content h2 + ul {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">Supervised and Unsupervised Learning</h1>
+                <p class="article-date">September 2020</p>
+
+                <div class="article-content">
+                    <p>These two paradigms represent the fundamental split in how machine learning algorithms approach problems. The distinction comes down to one thing: does your training data have labels or not? Understanding this difference is essential because it determines which algorithms apply to a given problem and what kind of results to expect.</p>
+
+                    <h2>Supervised Learning</h2>
+                    <p>Supervised learning uses labeled data. Each training example has an input paired with a known correct output. The algorithm learns to map inputs to outputs by minimizing prediction errors.</p>
+
+                    <div class="comparison-box">
+                        <h3>Key Characteristics of Supervised Learning</h3>
+                        <ul>
+                            <li>Requires labeled training data (expensive and time-consuming to create)</li>
+                            <li>Clear feedback loop during training (predicted vs actual)</li>
+                            <li>Well-defined success metrics (accuracy, precision, recall)</li>
+                            <li>Two main tasks: classification (discrete labels) and regression (continuous values)</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Common algorithms</strong> include <a href="linear-regression.html" style="color: var(--primary-color);">linear regression</a>, logistic regression, decision trees, random forests, support vector machines and neural networks.</p>
+
+                    <p><strong>Typical use cases</strong> are email spam detection, house price prediction, medical diagnosis and credit scoring.</p>
+
+                    <h2>Unsupervised Learning</h2>
+                    <p>Unsupervised learning works with unlabeled data. No correct answers exist. The algorithm finds hidden structure, patterns, or groupings on its own.</p>
+
+                    <div class="comparison-box">
+                        <h3>Key Characteristics of Unsupervised Learning</h3>
+                        <ul>
+                            <li>No labels needed (cheaper to obtain data)</li>
+                            <li>No explicit feedback signal</li>
+                            <li>Harder to evaluate (what defines success?)</li>
+                            <li>Main tasks: clustering, dimensionality reduction, association</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Common algorithms</strong> include k-means clustering, hierarchical clustering, DBSCAN, PCA and autoencoders.</p>
+
+                    <p><strong>Typical use cases</strong> are customer segmentation, anomaly detection, feature extraction and recommendation systems.</p>
+
+                    <h2>A Practical Analogy</h2>
+                    <p>Think of supervised learning like a student with a textbook and answer key. The student checks each answer against the correct one and adjusts understanding accordingly.</p>
+                    <p>Unsupervised learning is like giving someone a box of mixed objects and asking them to organize it however makes sense. There is no right answer, just patterns to discover.</p>
+
+                    <h2>Practical Example</h2>
+                    <p>Consider a practical example: classifying emails as spam or not spam is <strong>supervised</strong> because you have labeled examples of both. Grouping customers into segments based on purchasing behavior is <strong>unsupervised</strong> because no predefined categories exist. The algorithm discovers natural groupings.</p>
+
+                    <h2>Limitations</h2>
+                    <p>Limitations differ between the two:</p>
+                    <p><strong>Supervised learning</strong> needs quality labeled data, which is often scarce and expensive to obtain. Models can also overfit to training labels.</p>
+                    <p><strong>Unsupervised learning</strong> results can be hard to interpret and validate without domain expertise. There is no objective measure of whether discovered clusters are meaningful.</p>
+
+                    <h2>Semi-Supervised Learning</h2>
+                    <p>A third category worth noting is <strong>semi-supervised learning</strong>, which uses a small amount of labeled data combined with a large amount of unlabeled data. This approach is practical when labeling is expensive but unlabeled data is abundant.</p>
+
+                    <h2>When to Use Which?</h2>
+                    <div class="comparison-box">
+                        <p><strong>Choose supervised</strong> when you know what you want to predict and have labeled examples.</p>
+                        <p><strong>Choose unsupervised</strong> when exploring data structure or when labels are unavailable.</p>
+                    </div>
+
+                    <div class="diagram">
+                        <img src="../../images/supervised-unsupervised.png" alt="Supervised vs Unsupervised Learning" />
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+                            The fundamental difference between supervised and unsupervised learning
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../machine-learning.html" class="btn btn-secondary">← Back to Machine Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wasim Akram Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

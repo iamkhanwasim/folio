@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How Data is Stored in Memory - Understanding memory storage for data structures in Python by Wasim Khan">
+    <title>How Data is Stored in Memory - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .code-block {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        /* Syntax Highlighting */
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .code-block .number {
+            color: #b5cea8;
+        }
+        .code-block .operator {
+            color: #d4d4d4;
+        }
+        .code-block .variable {
+            color: #9cdcfe;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        .memory-visual {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid var(--border-color);
+        }
+        .memory-visual pre {
+            margin: 0;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .code-block,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + .memory-visual,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">How Data is Stored in Memory</h1>
+                <p class="article-date">March 2020</p>
+
+                <div class="article-content">
+                    <p>Understanding how data is stored in memory is crucial for writing efficient programs. Different data types and structures occupy memory in different ways, affecting both performance and memory usage. This knowledge helps you make informed decisions when choosing data structures.</p>
+
+                    <p>In Python, every value is an object stored in <a href="ram-how-it-works.html" style="color: var(--primary-color); text-decoration: none;">RAM</a>. Unlike low-level languages, Python abstracts memory management, but understanding the underlying storage helps optimize code.</p>
+
+                    <h2>How Integers are Stored</h2>
+                    <p>Integers in Python are objects that store numerical values. Unlike C or Java where an int is 4 bytes, Python integers are variable-sized and can grow to accommodate any number.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> sys
+
+<span class="comment"># Small integer</span>
+small_num <span class="operator">=</span> <span class="number">10</span>
+<span class="function">print</span>(<span class="string">f"Size of 10: <span class="variable">{sys.getsizeof(small_num)}</span> bytes"</span>)  <span class="comment"># 28 bytes</span>
+
+<span class="comment"># Larger integer</span>
+large_num <span class="operator">=</span> <span class="number">10000000000</span>
+<span class="function">print</span>(<span class="string">f"Size of 10B: <span class="variable">{sys.getsizeof(large_num)}</span> bytes"</span>)  <span class="comment"># 32 bytes</span>
+
+<span class="comment"># Very large integer (Python can handle arbitrary precision)</span>
+huge_num <span class="operator">=</span> <span class="number">2</span> <span class="operator">**</span> <span class="number">1000</span>
+<span class="function">print</span>(<span class="string">f"Size of 2^1000: <span class="variable">{sys.getsizeof(huge_num)}</span> bytes"</span>)  <span class="comment"># 160 bytes</span></code></pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Integer Storage Details:</h3>
+                        <ul>
+                            <li><strong>Overhead:</strong> Python integer objects have ~24 bytes of overhead (object header, reference count, type info)</li>
+                            <li><strong>Value storage:</strong> The actual number stored in 4-byte chunks</li>
+                            <li><strong>Small integers (-5 to 256):</strong> Cached and reused to save memory</li>
+                            <li><strong>Arbitrary precision:</strong> Can store numbers of any size (limited by available memory)</li>
+                        </ul>
+                    </div>
+
+                    <h2>How Characters and Strings are Stored</h2>
+                    <p>Strings in Python are sequences of Unicode characters. Each character is stored using a variable number of bytes depending on the encoding.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> sys
+
+<span class="comment"># Single character</span>
+char <span class="operator">=</span> <span class="string">'A'</span>
+<span class="function">print</span>(<span class="string">f"Size of 'A': <span class="variable">{sys.getsizeof(char)}</span> bytes"</span>)  <span class="comment"># 50 bytes</span>
+
+<span class="comment"># String storage</span>
+text <span class="operator">=</span> <span class="string">"Hello"</span>
+<span class="function">print</span>(<span class="string">f"Size of 'Hello': <span class="variable">{sys.getsizeof(text)}</span> bytes"</span>)  <span class="comment"># 54 bytes</span>
+
+<span class="comment"># Longer string</span>
+longer <span class="operator">=</span> <span class="string">"Hello World"</span>
+<span class="function">print</span>(<span class="string">f"Size of 'Hello World': <span class="variable">{sys.getsizeof(longer)}</span> bytes"</span>)  <span class="comment"># 60 bytes</span>
+
+<span class="comment"># Unicode character (requires more bytes)</span>
+emoji <span class="operator">=</span> <span class="string">"😀"</span>
+<span class="function">print</span>(<span class="string">f"Size of emoji: <span class="variable">{sys.getsizeof(emoji)}</span> bytes"</span>)  <span class="comment"># 76 bytes</span>
+
+<span class="comment"># Check encoding size</span>
+<span class="function">print</span>(<span class="string">f"'Hello' in UTF-8: <span class="variable">{len('Hello'.encode('utf-8'))}</span> bytes"</span>)  <span class="comment"># 5 bytes</span></code></pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>String Storage Details:</h3>
+                        <ul>
+                            <li><strong>Overhead:</strong> ~49 bytes for string object metadata</li>
+                            <li><strong>ASCII characters:</strong> 1 byte each when stored</li>
+                            <li><strong>Unicode (non-ASCII):</strong> 2-4 bytes per character</li>
+                            <li><strong>Immutable:</strong> Strings cannot be changed in place, new string created for modifications</li>
+                            <li><strong>Interning:</strong> Identical strings may share memory</li>
+                        </ul>
+                    </div>
+
+                    <h2>How Lists are Stored</h2>
+                    <p>Lists are stored as dynamic arrays. They maintain references (pointers) to objects, not the objects themselves.</p>
+
+                    <div class="memory-visual">
+                        <pre>List in Memory:
+┌─────────────────────┐
+│ List Object Header  │  (overhead: ~56 bytes)
+├─────────────────────┤
+│ [ptr] → Integer(1)  │  (8 bytes pointer)
+├─────────────────────┤
+│ [ptr] → Integer(2)  │  (8 bytes pointer)
+├─────────────────────┤
+│ [ptr] → Integer(3)  │  (8 bytes pointer)
+├─────────────────────┤
+│ [empty capacity]    │  (pre-allocated space)
+└─────────────────────┘</pre>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> sys
+
+<span class="comment"># Empty list</span>
+empty <span class="operator">=</span> []
+<span class="function">print</span>(<span class="string">f"Empty list: <span class="variable">{sys.getsizeof(empty)}</span> bytes"</span>)  <span class="comment"># 56 bytes</span>
+
+<span class="comment"># List with 3 integers</span>
+numbers <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+<span class="function">print</span>(<span class="string">f"List [1,2,3]: <span class="variable">{sys.getsizeof(numbers)}</span> bytes"</span>)  <span class="comment"># 88 bytes</span>
+
+<span class="comment"># List stores references, not values directly</span>
+a <span class="operator">=</span> [<span class="number">100</span>]
+b <span class="operator">=</span> [<span class="number">100</span>]
+<span class="function">print</span>(<span class="string">f"Same size: <span class="variable">{sys.getsizeof(a)}</span> == <span class="variable">{sys.getsizeof(b)}</span>"</span>)  <span class="comment"># Both 72 bytes</span>
+
+<span class="comment"># Lists over-allocate to avoid frequent resizing</span>
+lst <span class="operator">=</span> [<span class="number">1</span>]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">10</span>):
+    lst.<span class="function">append</span>(i)
+    <span class="function">print</span>(<span class="string">f"Length: <span class="variable">{len(lst)}</span>, Size: <span class="variable">{sys.getsizeof(lst)}</span>"</span>)</code></pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>List Storage Details:</h3>
+                        <ul>
+                            <li><strong>Contiguous memory:</strong> Array of pointers stored sequentially</li>
+                            <li><strong>Each element:</strong> 8 bytes (pointer to object)</li>
+                            <li><strong>Over-allocation:</strong> Extra capacity to minimize resizing</li>
+                            <li><strong>Growth pattern:</strong> Approximately doubles capacity when full</li>
+                            <li><strong>Mixed types allowed:</strong> Each pointer can reference any object type</li>
+                        </ul>
+                    </div>
+
+                    <h2>How Dictionaries are Stored</h2>
+                    <p>Dictionaries use hash tables for fast lookups. They store key-value pairs with significant overhead for the hash table structure.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> sys
+
+<span class="comment"># Empty dictionary</span>
+empty_dict <span class="operator">=</span> {}
+<span class="function">print</span>(<span class="string">f"Empty dict: <span class="variable">{sys.getsizeof(empty_dict)}</span> bytes"</span>)  <span class="comment"># 232 bytes</span>
+
+<span class="comment"># Dictionary with one entry</span>
+one_entry <span class="operator">=</span> {<span class="string">'a'</span>: <span class="number">1</span>}
+<span class="function">print</span>(<span class="string">f"Dict {a:1}: <span class="variable">{sys.getsizeof(one_entry)}</span> bytes"</span>)  <span class="comment"># 232 bytes</span>
+
+<span class="comment"># More entries</span>
+data <span class="operator">=</span> {<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>, <span class="string">'c'</span>: <span class="number">3</span>}
+<span class="function">print</span>(<span class="string">f"Dict with 3 items: <span class="variable">{sys.getsizeof(data)}</span> bytes"</span>)  <span class="comment"># 232 bytes</span>
+
+<span class="comment"># Dictionary expands when needed</span>
+big_dict <span class="operator">=</span> {<span class="string">f"key<span class="variable">{i}</span>"</span>: i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">100</span>)}
+<span class="function">print</span>(<span class="string">f"100 items: <span class="variable">{sys.getsizeof(big_dict)}</span> bytes"</span>)  <span class="comment"># 4704 bytes</span></code></pre>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Dictionary Storage Details:</h3>
+                        <ul>
+                            <li><strong>Hash table:</strong> Array of buckets for fast lookup</li>
+                            <li><strong>High overhead:</strong> Minimum 232 bytes even when empty</li>
+                            <li><strong>Each entry:</strong> Stores hash, key pointer, value pointer</li>
+                            <li><strong>Load factor:</strong> Resizes when ~2/3 full to maintain O(1) lookup</li>
+                            <li><strong>Ordered (Python 3.7+):</strong> Maintains insertion order</li>
+                        </ul>
+                    </div>
+
+                    <h2>Memory Addresses and References</h2>
+                    <p>Python variables are references to objects in memory. Understanding this is crucial for understanding how data is stored.</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Variables are references</span>
+a <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+b <span class="operator">=</span> a  <span class="comment"># b references same object as a</span>
+
+<span class="function">print</span>(<span class="string">f"a's address: <span class="variable">{id(a)}</span>"</span>)
+<span class="function">print</span>(<span class="string">f"b's address: <span class="variable">{id(b)}</span>"</span>)
+<span class="function">print</span>(<span class="string">f"Same object: <span class="variable">{a is b}</span>"</span>)  <span class="comment"># True</span>
+
+<span class="comment"># Modifying through one reference affects the other</span>
+b.<span class="function">append</span>(<span class="number">4</span>)
+<span class="function">print</span>(<span class="string">f"a: <span class="variable">{a}</span>"</span>)  <span class="comment"># [1, 2, 3, 4]</span>
+
+<span class="comment"># Integers are immutable - assignment creates new object</span>
+x <span class="operator">=</span> <span class="number">10</span>
+<span class="function">print</span>(<span class="string">f"x address: <span class="variable">{id(x)}</span>"</span>)
+x <span class="operator">=</span> <span class="number">20</span>
+<span class="function">print</span>(<span class="string">f"x new address: <span class="variable">{id(x)}</span>"</span>)  <span class="comment"># Different address</span></code></pre>
+                    </div>
+
+                    <h2>Contiguous vs Non-Contiguous Storage</h2>
+
+                    <div class="highlight-box">
+                        <h3>Contiguous Storage (Arrays/Lists):</h3>
+                        <ul>
+                            <li><strong>Memory layout:</strong> Elements stored in adjacent memory locations</li>
+                            <li><strong>Access:</strong> O(1) by index using arithmetic</li>
+                            <li><strong>Advantages:</strong> Cache-friendly, fast iteration</li>
+                            <li><strong>Disadvantages:</strong> Resizing is expensive, insertion/deletion in middle is O(n)</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Non-Contiguous Storage (Linked Lists, Trees):</h3>
+                        <ul>
+                            <li><strong>Memory layout:</strong> Elements scattered, connected by pointers</li>
+                            <li><strong>Access:</strong> O(n) requires following pointers</li>
+                            <li><strong>Advantages:</strong> Efficient insertion/deletion, no resizing needed</li>
+                            <li><strong>Disadvantages:</strong> Cache-unfriendly, extra memory for pointers</li>
+                        </ul>
+                    </div>
+
+                    <h2>Memory Overhead Comparison</h2>
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> sys
+
+<span class="comment"># Compare storage efficiency</span>
+<span class="keyword">def</span> <span class="function">compare_structures</span>(n):
+    <span class="comment"># List of integers</span>
+    lst <span class="operator">=</span> <span class="function">list</span>(<span class="function">range</span>(n))
+
+    <span class="comment"># Tuple of integers</span>
+    tpl <span class="operator">=</span> <span class="function">tuple</span>(<span class="function">range</span>(n))
+
+    <span class="comment"># Set of integers</span>
+    st <span class="operator">=</span> <span class="function">set</span>(<span class="function">range</span>(n))
+
+    <span class="comment"># Dictionary with integers</span>
+    dct <span class="operator">=</span> {i: i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(n)}
+
+    <span class="function">print</span>(<span class="string">f"\nStoring <span class="variable">{n}</span> integers:"</span>)
+    <span class="function">print</span>(<span class="string">f"List:  <span class="variable">{sys.getsizeof(lst):,}</span> bytes"</span>)
+    <span class="function">print</span>(<span class="string">f"Tuple: <span class="variable">{sys.getsizeof(tpl):,}</span> bytes"</span>)
+    <span class="function">print</span>(<span class="string">f"Set:   <span class="variable">{sys.getsizeof(st):,}</span> bytes"</span>)
+    <span class="function">print</span>(<span class="string">f"Dict:  <span class="variable">{sys.getsizeof(dct):,}</span> bytes"</span>)
+
+<span class="function">compare_structures</span>(<span class="number">1000</span>)
+<span class="comment"># List:  8,856 bytes</span>
+<span class="comment"># Tuple: 8,040 bytes (more compact)</span>
+<span class="comment"># Set:   32,992 bytes (hash table overhead)</span>
+<span class="comment"># Dict:  36,968 bytes (highest overhead)</span></code></pre>
+                    </div>
+
+                    <h2>Practical Implications</h2>
+
+                    <div class="highlight-box">
+                        <p><strong>Choose based on your needs:</strong></p>
+                        <ul>
+                            <li><strong>Need fast lookup?</strong> Use dict or set (accept memory overhead)</li>
+                            <li><strong>Memory-constrained?</strong> Use tuple instead of list when possible</li>
+                            <li><strong>Large datasets?</strong> Consider arrays from the array module (more compact)</li>
+                            <li><strong>Frequent modifications?</strong> Lists are better than tuples</li>
+                            <li><strong>Sequential access?</strong> Lists benefit from cache locality</li>
+                        </ul>
+                    </div>
+
+                    <h2>Key Takeaways</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Every Python value is an object</strong> with overhead for metadata</li>
+                            <li><strong>Integers have variable size</strong> and can grow arbitrarily large</li>
+                            <li><strong>Strings store Unicode characters</strong> using 1-4 bytes per character</li>
+                            <li><strong>Lists store pointers</strong> not values directly, in contiguous memory</li>
+                            <li><strong>Dictionaries use hash tables</strong> with significant memory overhead</li>
+                            <li><strong>Variables are references</strong> to objects, not the objects themselves</li>
+                            <li><strong>Different structures have different memory footprints</strong> - choose wisely</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../data-structures-algorithms.html" class="btn btn-secondary">← Back to Data Structures & Algorithms</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

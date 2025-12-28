@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Cost Function and Squared Error - Understanding how models measure prediction accuracy by Wasim Akram Khan">
+    <title>The Cost Function and Squared Error - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .code-block {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        /* Syntax Highlighting */
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .code-block .number {
+            color: #b5cea8;
+        }
+        .code-block .operator {
+            color: #d4d4d4;
+        }
+        .code-block .variable {
+            color: #9cdcfe;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .code-block,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">The Cost Function and Squared Error</h1>
+                <p class="article-date">September 2020</p>
+
+                <div class="article-content">
+                    <p>A cost function measures how wrong a model's predictions are. Without it, there is no way to know if one set of weights is better than another. The cost function provides the feedback signal that guides learning. Minimizing this function is the entire goal of training.</p>
+
+                    <p>For regression problems, the most common cost function is Mean Squared Error (MSE).</p>
+
+                    <div class="formula">
+                        <strong>Mean Squared Error (MSE):</strong><br><br>
+                        MSE = (1/n) × Σ(y_actual - y_predicted)²
+                    </div>
+
+                    <h2>Breaking It Down</h2>
+                    <ul>
+                        <li>Calculate the difference between actual and predicted values (the error or residual)</li>
+                        <li>Square each error</li>
+                        <li>Sum all squared errors</li>
+                        <li>Divide by the number of samples</li>
+                    </ul>
+
+                    <h2>Why Squared Error?</h2>
+                    <p>Why squared error instead of absolute error? Three reasons make squaring the preferred choice:</p>
+                    <ul>
+                        <li><strong>Penalizes large errors more heavily</strong>: An error of 10 contributes 100 to the cost, while an error of 2 contributes only 4. This pushes the model to avoid big mistakes rather than tolerating a few large errors in exchange for many small ones.</li>
+                        <li><strong>Smooth and differentiable</strong>: Squared functions are smooth and differentiable everywhere. This mathematical property matters because <a href="gradient-descent.html" style="color: var(--primary-color);">gradient descent</a> requires computing derivatives to know which direction to adjust weights. Absolute value has a kink at zero where the derivative is undefined.</li>
+                        <li><strong>Removes negative signs</strong>: Squaring removes negative signs. Without squaring, positive and negative errors would cancel out, giving a misleading total that suggests the model is accurate when it is not.</li>
+                    </ul>
+
+                    <h2>Intuition</h2>
+                    <p>Think of the cost function as a grading system for the model. Each prediction gets scored based on how far it missed the actual value. Squaring is like penalizing a student more harshly for being 20 points off than for being 5 points off, rather than treating all mistakes equally per point.</p>
+
+                    <h2>Example Calculation</h2>
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+y_actual <span class="operator">=</span> np.<span class="function">array</span>([<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">7</span>])
+y_predicted <span class="operator">=</span> np.<span class="function">array</span>([<span class="number">2.5</span>, <span class="number">5</span>, <span class="number">2.5</span>, <span class="number">8</span>])
+
+<span class="comment"># Manual calculation</span>
+errors <span class="operator">=</span> y_actual <span class="operator">-</span> y_predicted
+squared_errors <span class="operator">=</span> errors <span class="operator">**</span> <span class="number">2</span>
+mse <span class="operator">=</span> np.<span class="function">mean</span>(squared_errors)
+
+<span class="function">print</span>(<span class="string">f"Errors: {errors}"</span>)                  <span class="comment"># [ 0.5  0.  -0.5 -1. ]</span>
+<span class="function">print</span>(<span class="string">f"Squared errors: {squared_errors}"</span>)  <span class="comment"># [0.25 0.   0.25 1.  ]</span>
+<span class="function">print</span>(<span class="string">f"MSE: {mse}"</span>)                         <span class="comment"># 0.375</span></code></pre>
+                    </div>
+
+                    <div class="diagram">
+                        <img src="../../images/cost-function.png" alt="Cost Function Visualization" />
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+                            The cost function landscape showing the path to the minimum
+                        </p>
+                    </div>
+
+                    <h2>Related Cost Functions</h2>
+                    <p>Related cost functions serve different purposes:</p>
+                    <ul>
+                        <li><strong>Mean Absolute Error (MAE)</strong>: Uses absolute value instead of squaring. Less sensitive to outliers but not differentiable at zero.</li>
+                        <li><strong>Root Mean Squared Error (RMSE)</strong>: Square root of MSE. Returns error in original units, making interpretation easier.</li>
+                        <li><strong>Sum of Squared Errors (SSE)</strong>: Total squared error without averaging. Used in some optimization contexts.</li>
+                        <li><strong>R-squared (R²)</strong>: Proportion of variance explained by the model. Ranges from 0 to 1, where 1 means perfect fit.</li>
+                    </ul>
+
+                    <h2>Cost Function Landscape</h2>
+                    <p>The cost function landscape can be visualized as a surface where the x and y axes represent model parameters (weights) and the z axis represents the cost. Training is the process of finding the lowest point on this surface. For <a href="linear-regression.html" style="color: var(--primary-color);">linear regression</a> with MSE, this surface is convex, meaning it has a single global minimum. This guarantees that <a href="gradient-descent.html" style="color: var(--primary-color);">gradient descent</a> will find the optimal solution regardless of starting point.</p>
+
+                    <h2>Concrete Example</h2>
+                    <p>Consider a concrete example. Predicting house prices with four data points: actual values are [300k, 400k, 350k, 500k] and predictions are [310k, 380k, 360k, 520k]. The errors are [-10k, 20k, -10k, -20k]. Squared errors become [100M, 400M, 100M, 400M]. MSE equals 250M. The model is penalized more for the 20k errors than the 10k errors, which is the intended behavior.</p>
+
+                    <h2>Limitations</h2>
+                    <p>Limitations of squared error include sensitivity to outliers, since one extreme value can dominate the cost. If a single house in the dataset sold for an unusually high price due to special circumstances, MSE will heavily weight that error and distort the fitted line. It also assumes errors are normally distributed, which may not hold in practice.</p>
+
+                    <h2>Key Takeaway</h2>
+                    <p>The cost function is the bridge between making predictions and improving them. Choose MSE for regression when outliers are not a major concern and mathematical convenience matters for optimization.</p>
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../machine-learning.html" class="btn btn-secondary">← Back to Machine Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wasim Akram Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

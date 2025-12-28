@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gradient Descent - The optimization algorithm for machine learning by Wasim Akram Khan">
+    <title>Gradient Descent - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .code-block {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        /* Syntax Highlighting */
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .code-block .number {
+            color: #b5cea8;
+        }
+        .code-block .operator {
+            color: #d4d4d4;
+        }
+        .code-block .variable {
+            color: #9cdcfe;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .code-block,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">Gradient Descent</h1>
+                <p class="article-date">September 2020</p>
+
+                <div class="article-content">
+                    <p>Gradient descent is how machine learning models learn. It is an optimization algorithm that finds the minimum of a <a href="cost-function-squared-error.html" style="color: var(--primary-color);">cost function</a> by iteratively adjusting model parameters. Without gradient descent, training neural networks and many other models would be computationally impractical.</p>
+
+                    <p>The core idea: start with random parameter values, calculate how wrong the model is (cost), then adjust parameters in the direction that reduces the cost. Repeat until the cost stops decreasing.</p>
+
+                    <h2>The Update Rule</h2>
+                    <div class="formula">
+                        <strong>w_new = w_old - learning_rate × gradient</strong>
+                    </div>
+
+                    <h2>Key Concepts</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Gradient</strong>: The slope of the cost function at the current point. It points in the direction of steepest increase.</li>
+                            <li><strong>Learning rate (α)</strong>: Controls step size. Too large causes overshooting. Too small causes slow convergence.</li>
+                            <li><strong>Convergence</strong>: When parameters stops changing significantly, the algorithm has found a minimum.</li>
+                            <li><strong>Iteration/Epoch</strong>: One complete pass through the update process.</li>
+                        </ul>
+                    </div>
+
+                    <h2>Analogy</h2>
+                    <p>Imagine standing on a foggy hillside, trying to reach the lowest valley. You cannot see the whole landscape, only the slope directly beneath your feet. Gradient descent is like taking steps downhill based on the local slope, trusting that repeated steps will eventually lead to the bottom.</p>
+
+                    <h2>Gradient Descent Visualization</h2>
+                    <div class="diagram">
+                        <img src="../../images/gradient-descent.png" alt="Gradient Descent Visualization" />
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+                            Gradient descent iteratively moves parameters toward the minimum of the cost function.
+                        </p>
+                    </div>
+
+                    <h2>Simple Example</h2>
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+<span class="comment"># Simple gradient descent for y = x^2 (minimum at x=0)</span>
+<span class="keyword">def</span> <span class="function">gradient</span>(x):
+    <span class="keyword">return</span> <span class="number">2</span> <span class="operator">*</span> x  <span class="comment"># derivative of x^2</span>
+
+x <span class="operator">=</span> <span class="number">10.0</span>  <span class="comment"># starting point</span>
+learning_rate <span class="operator">=</span> <span class="number">0.1</span>
+iterations <span class="operator">=</span> <span class="number">50</span>
+
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(iterations):
+    grad <span class="operator">=</span> <span class="function">gradient</span>(x)
+    x <span class="operator">=</span> x <span class="operator">-</span> learning_rate <span class="operator">*</span> grad
+    <span class="keyword">if</span> i <span class="operator">%</span> <span class="number">10</span> <span class="operator">==</span> <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">f"Iteration {i}: x = {x:.6f}, cost = {x**2:.6f}"</span>)
+
+<span class="comment"># Output shows x approaching 0</span></code></pre>
+                    </div>
+
+                    <h2>Three Variants of Gradient Descent</h2>
+                    <div class="highlight-box">
+                        <h3>1. Batch Gradient Descent</h3>
+                        <p>Uses entire dataset to compute gradient. Stable but slow for large datasets.</p>
+
+                        <h3>2. Stochastic Gradient Descent (SGD)</h3>
+                        <p>Uses one sample at a time. Fast but noisy updates.</p>
+
+                        <h3>3. Mini-batch Gradient Descent</h3>
+                        <p>Uses small batches (32, 64, 128 samples). Balances speed and stability. <strong>Most commonly used in practice.</strong></p>
+                    </div>
+
+                    <h2>Learning Rate Selection</h2>
+                    <p>Learning rate selection matters:</p>
+                    <ul>
+                        <li><strong>Too high</strong>: cost oscillates or diverges, never reaching minimum</li>
+                        <li><strong>Too low</strong>: training takes excessively long, may get stuck</li>
+                        <li><strong>Common practice</strong>: start with 0.01 or 0.001, then tune</li>
+                    </ul>
+
+                    <h2>Problems Encountered</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Local minima</strong>: For non-convex functions, gradient descent may find a local minimum instead of the global minimum</li>
+                            <li><strong>Saddle points</strong>: Flat regions where gradient is near zero, slowing progress</li>
+                            <li><strong>Vanishing gradients</strong>: In deep networks, gradients can become extremely small, stopping learning</li>
+                        </ul>
+                    </div>
+
+                    <h2>Advanced Optimizers</h2>
+                    <p>Advanced optimizers build on basic gradient descent:</p>
+                    <ul>
+                        <li><strong>Momentum</strong>: Accumulates past gradients to smooth updates and escape local minima</li>
+                        <li><strong>RMSprop</strong>: Adapts learning rate per parameter based on recent gradient magnitudes</li>
+                        <li><strong>Adam</strong>: Combines momentum and RMSprop. Default choice for most deep learning tasks</li>
+                    </ul>
+
+                    <h2><a href="linear-regression.html" style="color: var(--text-primary); text-decoration: none;">Linear Regression</a> Example</h2>
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Linear regression with gradient descent</span>
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+X <span class="operator">=</span> np.<span class="function">array</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
+y <span class="operator">=</span> np.<span class="function">array</span>([<span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>])
+
+w <span class="operator">=</span> <span class="number">0.0</span>  <span class="comment"># weight</span>
+b <span class="operator">=</span> <span class="number">0.0</span>  <span class="comment"># bias</span>
+learning_rate <span class="operator">=</span> <span class="number">0.01</span>
+iterations <span class="operator">=</span> <span class="number">1000</span>
+
+n <span class="operator">=</span> <span class="function">len</span>(X)
+
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(iterations):
+    y_pred <span class="operator">=</span> w <span class="operator">*</span> X <span class="operator">+</span> b
+
+    <span class="comment"># Gradients</span>
+    dw <span class="operator">=</span> (<span class="operator">-</span><span class="number">2</span><span class="operator">/</span>n) <span class="operator">*</span> np.<span class="function">sum</span>(X <span class="operator">*</span> (y <span class="operator">-</span> y_pred))
+    db <span class="operator">=</span> (<span class="operator">-</span><span class="number">2</span><span class="operator">/</span>n) <span class="operator">*</span> np.<span class="function">sum</span>(y <span class="operator">-</span> y_pred)
+
+    <span class="comment"># Update</span>
+    w <span class="operator">=</span> w <span class="operator">-</span> learning_rate <span class="operator">*</span> dw
+    b <span class="operator">=</span> b <span class="operator">-</span> learning_rate <span class="operator">*</span> db
+
+    <span class="keyword">if</span> i <span class="operator">%</span> <span class="number">200</span> <span class="operator">==</span> <span class="number">0</span>:
+        cost <span class="operator">=</span> np.<span class="function">mean</span>((y <span class="operator">-</span> y_pred) <span class="operator">**</span> <span class="number">2</span>)
+        <span class="function">print</span>(<span class="string">f"Iteration {i}: w={w:.3f}, b={b:.3f}, cost={cost:.3f}"</span>)</code></pre>
+                    </div>
+
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../machine-learning.html" class="btn btn-secondary">← Back to Machine Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wasim Akram Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

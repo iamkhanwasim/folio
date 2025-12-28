@@ -3,307 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio website showcasing my work and skills">
-    <title>Wasim Khan</title>
+    <meta name="description" content="Wasim Khan - Senior AI Engineer with 13+ years of expertise in AI solution design, LLM systems and cloud platforms">
+    <title>Wasim Khan - Senior AI Engineer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">Wasim Khan</a>
+            <a href="#about" class="logo">Wasim Khan</a>
             <ul class="nav-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#github" class="nav-link">Experience</a></li>
+                <li><a href="#blog" class="nav-link">Articles</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- About Section -->
+    <section id="about" class="about" style="padding-top: 6rem;">
         <div class="container">
-            <p class="hero-tagline">Transforming Data into Intelligent Solutions</p>
-            <h1 class="hero-title">Hello, I'm <span class="highlight">Wasim Khan</span></h1>
-            <p class="hero-subtitle">AI Engineer | Machine Learning Specialist | Data Scientist</p>
-
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                <a href="assets/resume/Wasim Khan.pdf" target="_blank" class="btn btn-outline">Download Resume</a>
-            </div>
-
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">12+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">AI Models Deployed</div>
+            <h2 class="section-title">Wasim Khan</h2>
+            <p style="color: var(--primary-color); font-size: 1.25rem; font-weight: 600; margin-bottom: 2rem;">Senior AI Engineer</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Senior AI Engineer with 13+ years of expertise in full stack AI solution design, development and deployment across healthcare and enterprise domains. Experienced in building production-grade agentic systems, LLM evaluation frameworks and RAG-based applications using LLMs.</p>
+                    <p>Proven track record in leading cross-functional teams to deliver AI native outcomes that drive measurable business impact. Expert in prompt engineering and optimization and scalable ML pipelines with deep knowledge of cloud platforms (AWS, Azure, GCP) and modern AI development tools.</p>
+                    <p>Skilled in translating complex business requirements into innovative technical solutions while maintaining rigorous software engineering standards, compliance guardrails and cost optimization strategies.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about section">
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="assets/images/profile-pic.jpeg" alt="Wasim Khan">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <p>Python, SQL, C#, R</p>
                 </div>
-                <div class="about-text">
-                    <p>
-                        I'm a passionate AI Engineer specializing in machine learning and data science. With expertise in
-                        developing intelligent systems, I transform complex data into actionable insights and build AI solutions
-                        that solve real-world problems. My work spans across natural language processing, computer vision,
-                        and predictive analytics.
-                    </p>
-                    <p>
-                        I leverage cutting-edge frameworks like TensorFlow, PyTorch, and scikit-learn to create robust ML models,
-                        and deploy them using modern MLOps practices. From data preprocessing and feature engineering to model
-                        training and deployment, I handle the entire ML lifecycle with precision and scalability in mind.
-                    </p>
-                    <p>
-                        When I'm not training models or optimizing algorithms, you can find me exploring the latest research papers,
-                        contributing to open-source AI projects, experimenting with generative AI, or sharing knowledge with the
-                        tech community. I'm constantly learning and adapting to the rapidly evolving AI landscape.
-                    </p>
+                <div class="skill-category">
+                    <h3>LLM & GenAI Frameworks</h3>
+                    <p>LangGraph, LangChain, GPT-4, Claude API, Azure OpenAI, Prompt Optimization, RAG Systems</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Machine Learning</h3>
+                    <p>Regression, Classification, Decision Trees, Random Forests, SVM, Neural Networks, NLP, TensorFlow, Keras, PyTorch, Scikit-Learn, SciPy, Hugging Face Transformers</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Engineering Tools</h3>
+                    <p>Apache Beam, Dataflow, BigQuery, Apache Spark, Matplotlib, Seaborn, Tableau</p>
+                </div>
+                <div class="skill-category">
+                    <h3>AI Development Tools</h3>
+                    <p>VS Code, Jupyter Notebooks, Git, Azure DevOps, MLflow, Docker, CI/CD Pipelines, Cursor, Claude Code</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud Platforms</h3>
+                    <p>Microsoft Azure, Amazon Web Services (AWS), Google Cloud Platform (GCP)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title">Technical Articles & Insights</h2>
+            <div class="blog-content">
+                <p class="blog-subtitle">Exploring AI, Machine Learning and Cloud Technologies</p>
+                <ul class="blog-list">
+                    <li class="blog-item">
+                        <a href="blog.html#agentic-systems" class="blog-link">Building Production-Ready Agentic Systems with LangGraph</a>
+                    </li>
+                    <li class="blog-item">
+                        <a href="blog.html#llm-evaluation" class="blog-link">LLM Evaluation Frameworks for Healthcare</a>
+                    </li>
+                    <li class="blog-item">
+                        <a href="blog.html#prompt-engineering" class="blog-link">Prompt Engineering Optimization Techniques</a>
+                    </li>
+                    <li class="blog-item">
+                        <a href="blog.html#ml-pipelines" class="blog-link">Scalable ML Pipelines on GCP</a>
+                    </li>
+                    <li class="blog-item">
+                        <a href="blog.html#rag-systems" class="blog-link">Advanced RAG Systems for Enterprise Applications</a>
+                    </li>
+                    <li class="blog-item">
+                        <a href="blog.html#ai-healthcare" class="blog-link">AI in Healthcare: Compliance and Best Practices</a>
+                    </li>
+                </ul>
+                <div style="margin-top: 2rem;">
+                    <a href="blog.html" class="blog-link" style="font-weight: 600;">Show All →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects section">
+    <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title">Key Projects & Achievements</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder"><span>AI Chatbot</span></div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Intelligent Conversational AI</h3>
-                        <p>Developed a context-aware chatbot using GPT models and LangChain. Implemented RAG (Retrieval-Augmented Generation) for domain-specific knowledge and fine-tuned responses. Built with Python, OpenAI API, and deployed on AWS.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Demo</a>
-                            <a href="#" class="project-link">View Code</a>
-                        </div>
+                    <h3>Healthcare LLM Evaluation Framework</h3>
+                    <p>Designed comprehensive evaluation framework with guardrails, leveraging LLM-as-judge models to assess factual accuracy, hallucinations, context adherence, response relevancy and HIPAA compliance. Implemented Prefix Tuning for prompt optimization to improve evaluation consistency and reduce inference costs.</p>
+                    <div class="project-tags">
+                        <span class="tag">LLM Evaluation</span>
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">HIPAA Compliance</span>
+                        <span class="tag">Healthcare AI</span>
                     </div>
                 </div>
-
                 <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder"><span>Image Recognition</span></div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Real-Time Object Detection System</h3>
-                        <p>Built a real-time object detection system using YOLOv8 and PyTorch. Achieved 95% accuracy on custom datasets with transfer learning. Integrated with REST API for seamless deployment and scalable inference.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Demo</a>
-                            <a href="#" class="project-link">View Code</a>
-                        </div>
+                    <h3>Agentic AI Systems with LangGraph</h3>
+                    <p>Led development of multiple production-grade agentic systems: Persona-based RAG chatbot agents for go-to-market strategies, web scraper agent for automated healthcare product comparison (15% accuracy improvement) and Taskmaster agent for Azure DevOps story generation reducing BA/QA effort by 30%.</p>
+                    <div class="project-tags">
+                        <span class="tag">LangGraph</span>
+                        <span class="tag">RAG</span>
+                        <span class="tag">Agentic Systems</span>
+                        <span class="tag">Azure DevOps</span>
                     </div>
                 </div>
-
                 <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder"><span>ML Pipeline</span></div>
-                    </div>
-                    <div class="project-info">
-                        <h3>End-to-End MLOps Pipeline</h3>
-                        <p>Designed and deployed a complete MLOps pipeline for predictive analytics. Automated model training, versioning with MLflow, CI/CD with GitHub Actions, and containerized deployment using Docker and Kubernetes for production-ready ML solutions.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Demo</a>
-                            <a href="#" class="project-link">View Code</a>
-                        </div>
+                    <h3>Physician Classification & Medical Expert Identification</h3>
+                    <p>Built physician classification models using Stanza achieving 98% accuracy. Designed ML algorithms for identifying medical experts from 10M+ data points. Developed web scraping tools generating 50% of training data and created custom GCP dataflow pipelines reducing manual effort by 15%.</p>
+                    <div class="project-tags">
+                        <span class="tag">NLP</span>
+                        <span class="tag">ML Classification</span>
+                        <span class="tag">GCP Dataflow</span>
+                        <span class="tag">BigQuery</span>
                     </div>
                 </div>
-
-                <div class="view-all-card">
-                    <a href="projects.html" class="btn-view-all">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="40" cy="40" r="38" stroke="currentColor" stroke-width="2" fill="none"/>
-                            <path d="M30 40H50M50 40L43 33M50 40L43 47" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <span class="view-all-label">View All</span>
+                <div class="project-card">
+                    <h3>Cloud Migration & Cost Optimization</h3>
+                    <p>Developed one-click cloud migration app saving organization 1M+ in migration costs. Designed architecture for MS Project and Dynamics 365 integration leveraging Azure & AWS services. Achieved cloud cost optimization reducing business costs by 9%.</p>
+                    <div class="project-tags">
+                        <span class="tag">Azure</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">Cloud Architecture</span>
+                        <span class="tag">Cost Optimization</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>ML Model Deployment & CI/CD Pipelines</h3>
+                    <p>Performed ML model deployment utilizing Azure cloud services. Built complex function apps, lambda functions and APIs for application integration. Created extensive CI/CD pipeline for code deployment using Git and Azure DevOps, ensuring reliable and automated deployments.</p>
+                    <div class="project-tags">
+                        <span class="tag">MLOps</span>
+                        <span class="tag">CI/CD</span>
+                        <span class="tag">Azure Functions</span>
+                        <span class="tag">Lambda</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Agricultural Deep Learning Application</h3>
+                    <p>Cloud deployment optics for high-scale agricultural application based on deep learning. Collaborated with development teams to create scalable backend systems supporting advanced computer vision and ML models for agricultural analysis.</p>
+                    <div class="project-tags">
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Cloud Deployment</span>
+                        <span class="tag">Scalability</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blogs Section -->
-    <section id="blogs" class="blogs section">
+    <!-- Experience & Education Section -->
+    <section id="github" class="github">
         <div class="container">
-            <h2 class="section-title">Latest Blogs</h2>
-            <div class="blogs-grid">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="AI Blog">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="github-content">
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--text-primary); text-align: left;">Professional Experience</h3>
+                <div class="repos-list">
+                    <div class="repo-card">
+                        <h3>Technical Specialist - II</h3>
+                        <p><strong>CitiusTech Healthcare</strong> | Mississauga, Canada | May 2025 - Present</p>
+                        <p>Leading development of agentic AI systems using LangGraph. Designing scalable AI/ML pipelines with React frontends and backend APIs. Key liaison with BA and Product Owners for technical requirements translation.</p>
                     </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">Mar 15, 2024</span>
-                            <span class="blog-category">Machine Learning</span>
-                        </div>
-                        <h3 class="blog-title">Understanding Large Language Models: A Deep Dive into GPT Architecture</h3>
-                        <p class="blog-excerpt">Explore the inner workings of Large Language Models and how transformer architecture revolutionized natural language processing...</p>
-                        <a href="blog/understanding-llms.html" class="blog-link">Read More →</a>
+                    <div class="repo-card">
+                        <h3>Technical Specialist</h3>
+                        <p><strong>CitiusTech Healthcare</strong> | Mumbai, India | Apr 2023 - Apr 2024</p>
+                        <p>Designed healthcare LLM evaluation framework with HIPAA compliance guardrails. Led implementation of Prefix Tuning for prompt optimization. Managed team of data scientists.</p>
                     </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&q=80" alt="Computer Vision Blog">
+                    <div class="repo-card">
+                        <h3>Technical Lead</h3>
+                        <p><strong>CitiusTech Healthcare</strong> | Mumbai, India | Sep 2021 - Mar 2023</p>
+                        <p>Built physician classification models with 98% accuracy. Designed ML algorithms for medical expert identification from 10M+ data points. Created custom GCP dataflow pipelines.</p>
                     </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">Mar 10, 2024</span>
-                            <span class="blog-category">Computer Vision</span>
-                        </div>
-                        <h3 class="blog-title">Advanced Object Detection with YOLOv8: Tips and Best Practices</h3>
-                        <p class="blog-excerpt">Learn how to implement and optimize YOLOv8 for real-time object detection in production environments...</p>
-                        <a href="blog/yolov8-object-detection.html" class="blog-link">Read More →</a>
+                    <div class="repo-card">
+                        <h3>Application Development Senior Analyst</h3>
+                        <p><strong>Accenture</strong> | Mumbai, India | May 2019 - Sep 2021</p>
+                        <p>ML model deployment using Azure cloud services. Cloud cost optimization reducing business costs by 9%. Received Accenture ACE Award for surpassing targets by 15%.</p>
                     </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80" alt="MLOps Blog">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">Mar 5, 2024</span>
-                            <span class="blog-category">MLOps</span>
-                        </div>
-                        <h3 class="blog-title">Building Scalable ML Pipelines: From Development to Production</h3>
-                        <p class="blog-excerpt">A comprehensive guide to designing and implementing robust MLOps pipelines using modern tools and best practices...</p>
-                        <a href="blog/mlops-pipelines.html" class="blog-link">Read More →</a>
+                    <div class="repo-card">
+                        <h3>Consultant</h3>
+                        <p><strong>Capgemini</strong> | Mumbai, India | Jan 2017 - May 2019</p>
+                        <p>Developed one-click cloud migration app saving organization 1M+ in costs. Received Out of Box award for innovative solutions.</p>
                     </div>
                 </div>
-            </div>
-            <div class="view-all-container">
-                <a href="blogs.html" class="btn btn-primary">View All Blogs</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming & Cloud</h3>
-                    <ul class="skill-list">
-                        <li>Python</li>
-                        <li>SQL</li>
-                        <li>C#</li>
-                        <li>AWS</li>
-                        <li>Azure</li>
-                        <li>GCP</li>
-                    </ul>
+                <h3 style="font-size: 1.5rem; margin: 3rem 0 2rem; color: var(--text-primary); text-align: left;">Education</h3>
+                <div class="repos-list">
+                    <div class="repo-card">
+                        <h3>Master of Science in Artificial Intelligence & Machine Learning</h3>
+                        <p><strong>Liverpool John Moores University</strong> | Apr 2022 - May 2023</p>
+                    </div>
+                    <div class="repo-card">
+                        <h3>Post Graduate Diploma in Machine Learning & AI</h3>
+                        <p><strong>International Institute of Information Technology</strong> | Mar 2021 - Apr 2022</p>
+                    </div>
+                    <div class="repo-card">
+                        <h3>Bachelor of Engineering in Information Technology</h3>
+                        <p><strong>University of Pune</strong> | Jun 2007 - May 2012</p>
+                    </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3>ML Frameworks</h3>
-                    <ul class="skill-list">
-                        <li>TensorFlow</li>
-                        <li>Keras</li>
-                        <li>PyTorch</li>
-                        <li>Scikit-learn</li>
-                        <li>XGBoost</li>
-                        <li>Jupyter Notebook</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Data Science</h3>
-                    <ul class="skill-list">
-                        <li>Pandas</li>
-                        <li>NumPy</li>
-                        <li>SciPy</li>
-                        <li>Matplotlib</li>
-                        <li>BigQuery</li>
-                        <li>Google Data Studio</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>AI & Deep Learning</h3>
-                    <ul class="skill-list">
-                        <li>LLMs & GPT Models</li>
-                        <li>Generative AI</li>
-                        <li>Deep Learning</li>
-                        <li>Neural Networks</li>
-                        <li>Computer Vision</li>
-                        <li>Clustering</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>NLP & Analytics</h3>
-                    <ul class="skill-list">
-                        <li>NLTK</li>
-                        <li>spaCy</li>
-                        <li>Stanza</li>
-                        <li>NLP (Transformers)</li>
-                        <li>Regression & Classification</li>
-                        <li>Predictive Modelling</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>MLOps & Deployment</h3>
-                    <ul class="skill-list">
-                        <li>Docker</li>
-                        <li>Git & Linux</li>
-                        <li>CI/CD</li>
-                        <li>Model Deployment</li>
-                        <li>Data Visualization</li>
-                        <li>MLflow</li>
-                    </ul>
+                <h3 style="font-size: 1.5rem; margin: 3rem 0 2rem; color: var(--text-primary); text-align: left;">Certifications</h3>
+                <div class="blog-meta" style="margin-bottom: 2rem;">
+                    <span>Google Cloud Certified Professional Cloud Architect</span>
+                    <span>•</span>
+                    <span>Microsoft Certified Azure Developer Associate</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
-                <p class="contact-intro">
-                    Have a project in mind or just want to say hello? Feel free to reach out!
-                </p>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <p class="contact-subtitle">Interested in collaborating or have a question? Let's connect!</p>
+                <div style="margin-bottom: 3rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="color: var(--text-primary); font-size: 1.125rem; margin-bottom: 0.5rem;">
+                            <strong>Email:</strong> <a href="mailto:wasimkhan94494@gmail.com" style="color: var(--primary-color); text-decoration: none;">wasimkhan94494@gmail.com</a>
+                        </p>
+                        <p style="color: var(--text-primary); font-size: 1.125rem; margin-bottom: 0.5rem;">
+                            <strong>Phone:</strong> <a href="tel:+14372346559" style="color: var(--primary-color); text-decoration: none;">+1 437-234-6559</a>
+                        </p>
+                        <p style="color: var(--text-primary); font-size: 1.125rem;">
+                            <strong>Location:</strong> Mississauga, Canada
+                        </p>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                    <div class="form-message" id="formMessage"></div>
-                </form>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/wasim-k" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="mailto:wasimkhan94494@gmail.com" class="social-link" aria-label="Email">Email</a>
+                </div>
             </div>
         </div>
     </section>
@@ -312,11 +274,6 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" aria-label="GitHub">GitHub</a>
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="Twitter">Twitter</a>
-            </div>
         </div>
     </footer>
 

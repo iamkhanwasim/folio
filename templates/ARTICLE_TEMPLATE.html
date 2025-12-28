@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[Article description] by Wasim Khan">
+    <title>[Article Title] - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .code-block {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        /* Syntax Highlighting */
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .code-block .number {
+            color: #b5cea8;
+        }
+        .code-block .operator {
+            color: #d4d4d4;
+        }
+        .code-block .variable {
+            color: #9cdcfe;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .code-block,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">[Article Title]</h1>
+                <p class="article-date">[Month Year]</p>
+
+                <div class="article-content">
+                    <p>[Introduction paragraph explaining the topic and why it matters.]</p>
+
+                    <p>[Second paragraph with more context or key concepts.]</p>
+
+                    <h2>[Section Heading]</h2>
+                    <div class="formula">
+                        <strong>[Mathematical formula or key equation]</strong>
+                    </div>
+
+                    <h2>Key Concepts</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>[Concept 1]</strong>: Description of first concept</li>
+                            <li><strong>[Concept 2]</strong>: Description of second concept</li>
+                            <li><strong>[Concept 3]</strong>: Description of third concept</li>
+                            <li><strong>[Concept 4]</strong>: Description of fourth concept</li>
+                        </ul>
+                    </div>
+
+                    <h2>Analogy</h2>
+                    <p>[Use an analogy to explain complex concepts in simple terms.]</p>
+
+                    <h2>[Visualization Section]</h2>
+                    <div class="diagram">
+                        <img src="../../images/[image-name].png" alt="[Alt text for image]" />
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+                            [Caption describing the diagram]
+                        </p>
+                    </div>
+
+                    <h2>Simple Example</h2>
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+<span class="comment"># [Comment describing the code]</span>
+<span class="keyword">def</span> <span class="function">example_function</span>(param):
+    <span class="keyword">return</span> param <span class="operator">*</span> <span class="number">2</span>
+
+<span class="comment"># [Usage example]</span>
+result <span class="operator">=</span> <span class="function">example_function</span>(<span class="number">5</span>)
+<span class="function">print</span>(<span class="string">f"Result: {result}"</span>)</code></pre>
+                    </div>
+
+                    <h2>[Variants or Types]</h2>
+                    <div class="highlight-box">
+                        <h3>1. [Variant Name]</h3>
+                        <p>[Description of first variant]</p>
+
+                        <h3>2. [Variant Name]</h3>
+                        <p>[Description of second variant]</p>
+
+                        <h3>3. [Variant Name]</h3>
+                        <p>[Description of third variant - often highlighted as most common]</p>
+                    </div>
+
+                    <h2>[Practical Considerations]</h2>
+                    <p>[Introduction to practical section]</p>
+                    <ul>
+                        <li><strong>[Point 1]</strong>: Description</li>
+                        <li><strong>[Point 2]</strong>: Description</li>
+                        <li><strong>[Point 3]</strong>: Description</li>
+                    </ul>
+
+                    <h2>Problems Encountered</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>[Problem 1]</strong>: Description and impact</li>
+                            <li><strong>[Problem 2]</strong>: Description and impact</li>
+                            <li><strong>[Problem 3]</strong>: Description and impact</li>
+                        </ul>
+                    </div>
+
+                    <h2>Advanced Topics</h2>
+                    <p>[Introduction to advanced concepts]</p>
+                    <ul>
+                        <li><strong>[Advanced Topic 1]</strong>: Brief description</li>
+                        <li><strong>[Advanced Topic 2]</strong>: Brief description</li>
+                        <li><strong>[Advanced Topic 3]</strong>: Brief description</li>
+                    </ul>
+
+                    <h2><a href="[related-article].html" style="color: var(--text-primary); text-decoration: none;">[Related Topic]</a> Example</h2>
+                    <div class="code-block">
+                        <pre><code><span class="comment"># [Code example title]</span>
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+<span class="comment"># [Setup data or variables]</span>
+data <span class="operator">=</span> np.<span class="function">array</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
+
+<span class="comment"># [Main algorithm or process]</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">10</span>):
+    result <span class="operator">=</span> data <span class="operator">*</span> i
+    <span class="function">print</span>(<span class="string">f"Step {i}: {result}"</span>)</code></pre>
+                    </div>
+
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../[category].html" class="btn btn-secondary">← Back to [Category]</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

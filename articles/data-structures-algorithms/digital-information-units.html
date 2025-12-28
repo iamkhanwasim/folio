@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fundamentals of Units of Digital Information - Understanding bits, bytes, and storage units in computing with Python by Wasim Khan">
+    <title>Digital Information Units - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .code-block {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        /* Syntax Highlighting */
+        .code-block .keyword {
+            color: #569cd6;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .code-block .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .code-block .function {
+            color: #dcdcaa;
+        }
+        .code-block .number {
+            color: #b5cea8;
+        }
+        .code-block .operator {
+            color: #d4d4d4;
+        }
+        .code-block .variable {
+            color: #9cdcfe;
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        .units-table {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        .units-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+        }
+        .units-table th {
+            background: #34495e;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .units-table td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .units-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.02);
+        }
+        .units-table tr:hover {
+            background: rgba(var(--primary-rgb), 0.08);
+        }
+        .units-table td:first-child {
+            font-weight: 600;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .code-block,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + .units-table,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">Fundamentals of Units of Digital Information</h1>
+                <p class="article-date">March 2020</p>
+
+                <div class="article-content">
+                    <p>Digital information is measured in units based on the binary number system. Understanding these units is fundamental to programming, as they determine how much memory your programs use and how efficiently data is stored and processed.</p>
+
+                    <p>Every piece of data in a computer - numbers, text, images, programs - is ultimately represented as a sequence of bits. These units scale from the smallest bit to massive storage capacities.</p>
+
+                    <h2>The Bit: The Foundation</h2>
+                    <div class="highlight-box">
+                        <p>A <strong>bit</strong> (binary digit) is the smallest unit of digital information. It can hold only two values: 0 or 1.</p>
+                        <p>Everything in computing boils down to bits. A bit represents:</p>
+                        <ul>
+                            <li>On or Off</li>
+                            <li>True or False</li>
+                            <li>Yes or No</li>
+                            <li>High voltage or Low voltage (at the hardware level)</li>
+                        </ul>
+                    </div>
+
+                    <h2>The Byte: Building Block of Storage</h2>
+                    <p>A <strong>byte</strong> is a group of 8 bits. It is the standard unit for measuring storage and memory.</p>
+
+                    <div class="formula">
+                        <strong>1 byte = 8 bits</strong>
+                    </div>
+
+                    <p>With 8 bits, a byte can represent 2<sup>8</sup> = 256 different values (0-255).</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="comment"># A byte can store a single character in ASCII</span>
+character <span class="operator">=</span> <span class="string">'A'</span>  <span class="comment"># ASCII value: 65 (binary: 01000001)</span>
+
+<span class="comment"># Python's bytes type</span>
+data <span class="operator">=</span> <span class="function">bytes</span>([<span class="number">65</span>, <span class="number">66</span>, <span class="number">67</span>])  <span class="comment"># b'ABC'</span>
+<span class="function">print</span>(data)
+
+<span class="comment"># Check size in bytes</span>
+text <span class="operator">=</span> <span class="string">"Hello"</span>
+<span class="function">print</span>(<span class="function">len</span>(text.<span class="function">encode</span>(<span class="string">'utf-8'</span>)))  <span class="comment"># 5 bytes</span></code></pre>
+                    </div>
+
+                    <h2>Storage Units Hierarchy</h2>
+                    <p>Storage units scale in powers of 1024 (2<sup>10</sup>) in the binary system, though decimal (powers of 1000) is sometimes used.</p>
+
+                    <div class="units-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Unit</th>
+                                    <th>Abbreviation</th>
+                                    <th>Binary (Base 2)</th>
+                                    <th>Decimal (Base 10)</th>
+                                    <th>In Bytes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bit</td>
+                                    <td>b</td>
+                                    <td>1 bit</td>
+                                    <td>1 bit</td>
+                                    <td>1/8 byte</td>
+                                </tr>
+                                <tr>
+                                    <td>Byte</td>
+                                    <td>B</td>
+                                    <td>8 bits</td>
+                                    <td>8 bits</td>
+                                    <td>1 byte</td>
+                                </tr>
+                                <tr>
+                                    <td>Kilobyte</td>
+                                    <td>KB</td>
+                                    <td>2<sup>10</sup> = 1,024 bytes</td>
+                                    <td>10<sup>3</sup> = 1,000 bytes</td>
+                                    <td>~1,000 bytes</td>
+                                </tr>
+                                <tr>
+                                    <td>Megabyte</td>
+                                    <td>MB</td>
+                                    <td>2<sup>20</sup> = 1,048,576 bytes</td>
+                                    <td>10<sup>6</sup> = 1,000,000 bytes</td>
+                                    <td>~1 million bytes</td>
+                                </tr>
+                                <tr>
+                                    <td>Gigabyte</td>
+                                    <td>GB</td>
+                                    <td>2<sup>30</sup> = 1,073,741,824 bytes</td>
+                                    <td>10<sup>9</sup> = 1,000,000,000 bytes</td>
+                                    <td>~1 billion bytes</td>
+                                </tr>
+                                <tr>
+                                    <td>Terabyte</td>
+                                    <td>TB</td>
+                                    <td>2<sup>40</sup> bytes</td>
+                                    <td>10<sup>12</sup> bytes</td>
+                                    <td>~1 trillion bytes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Binary vs Decimal Units</h2>
+                    <div class="highlight-box">
+                        <p><strong>The Confusion:</strong> Storage manufacturers use decimal (base 10) while computers use binary (base 2).</p>
+                        <ul>
+                            <li><strong>1 KB (decimal)</strong> = 1,000 bytes</li>
+                            <li><strong>1 KiB (binary)</strong> = 1,024 bytes</li>
+                            <li><strong>1 GB (decimal)</strong> = 1,000,000,000 bytes</li>
+                            <li><strong>1 GiB (binary)</strong> = 1,073,741,824 bytes</li>
+                        </ul>
+                        <p>This is why a "500 GB" hard drive shows as ~465 GB in your operating system.</p>
+                    </div>
+
+                    <h2>Conversions in Python</h2>
+                    <div class="code-block">
+                        <pre><code><span class="comment"># Unit conversion functions</span>
+<span class="keyword">def</span> <span class="function">bytes_to_kb</span>(bytes_val):
+    <span class="keyword">return</span> bytes_val <span class="operator">/</span> <span class="number">1024</span>
+
+<span class="keyword">def</span> <span class="function">bytes_to_mb</span>(bytes_val):
+    <span class="keyword">return</span> bytes_val <span class="operator">/</span> (<span class="number">1024</span> <span class="operator">**</span> <span class="number">2</span>)
+
+<span class="keyword">def</span> <span class="function">bytes_to_gb</span>(bytes_val):
+    <span class="keyword">return</span> bytes_val <span class="operator">/</span> (<span class="number">1024</span> <span class="operator">**</span> <span class="number">3</span>)
+
+<span class="comment"># Example</span>
+file_size <span class="operator">=</span> <span class="number">5242880</span>  <span class="comment"># bytes</span>
+<span class="function">print</span>(<span class="string">f"Size: <span class="variable">{bytes_to_mb(file_size):.2f}</span> MB"</span>)  <span class="comment"># 5.00 MB</span>
+
+<span class="comment"># Human-readable file sizes</span>
+<span class="keyword">def</span> <span class="function">human_readable_size</span>(bytes_val):
+    <span class="keyword">for</span> unit <span class="keyword">in</span> [<span class="string">'B'</span>, <span class="string">'KB'</span>, <span class="string">'MB'</span>, <span class="string">'GB'</span>, <span class="string">'TB'</span>]:
+        <span class="keyword">if</span> bytes_val <span class="operator">&lt;</span> <span class="number">1024.0</span>:
+            <span class="keyword">return</span> <span class="string">f"<span class="variable">{bytes_val:.2f}</span> <span class="variable">{unit}</span>"</span>
+        bytes_val <span class="operator">/=</span> <span class="number">1024.0</span>
+    <span class="keyword">return</span> <span class="string">f"<span class="variable">{bytes_val:.2f}</span> TB"</span>
+
+<span class="function">print</span>(<span class="function">human_readable_size</span>(<span class="number">1234567890</span>))  <span class="comment"># 1.15 GB</span></code></pre>
+                    </div>
+
+                    <h2>Memory Usage in Python</h2>
+                    <p>Different Python data types consume different amounts of memory:</p>
+
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> sys
+
+<span class="comment"># Check object size in bytes</span>
+integer <span class="operator">=</span> <span class="number">42</span>
+<span class="function">print</span>(<span class="string">f"int: <span class="variable">{sys.getsizeof(integer)}</span> bytes"</span>)      <span class="comment"># 28 bytes</span>
+
+text <span class="operator">=</span> <span class="string">"Hello"</span>
+<span class="function">print</span>(<span class="string">f"str: <span class="variable">{sys.getsizeof(text)}</span> bytes"</span>)        <span class="comment"># 54 bytes</span>
+
+numbers <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+<span class="function">print</span>(<span class="string">f"list: <span class="variable">{sys.getsizeof(numbers)}</span> bytes"</span>)    <span class="comment"># 104 bytes</span>
+
+data <span class="operator">=</span> {<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>}
+<span class="function">print</span>(<span class="string">f"dict: <span class="variable">{sys.getsizeof(data)}</span> bytes"</span>)      <span class="comment"># 232 bytes</span>
+
+<span class="comment"># Large list memory usage</span>
+big_list <span class="operator">=</span> <span class="function">list</span>(<span class="function">range</span>(<span class="number">1000000</span>))
+size_mb <span class="operator">=</span> <span class="function">sys.getsizeof</span>(big_list) <span class="operator">/</span> (<span class="number">1024</span> <span class="operator">**</span> <span class="number">2</span>)
+<span class="function">print</span>(<span class="string">f"1M integers: <span class="variable">{size_mb:.2f}</span> MB"</span>)        <span class="comment"># ~7.63 MB</span></code></pre>
+                    </div>
+
+                    <h2>Practical Examples</h2>
+
+                    <div class="highlight-box">
+                        <h3>File Sizes:</h3>
+                        <ul>
+                            <li><strong>Plain text file (1 page):</strong> ~2-5 KB</li>
+                            <li><strong>High-resolution photo:</strong> 3-10 MB</li>
+                            <li><strong>MP3 song (4 minutes):</strong> ~4 MB</li>
+                            <li><strong>HD movie (2 hours):</strong> 4-8 GB</li>
+                            <li><strong>Operating system:</strong> 10-50 GB</li>
+                        </ul>
+                    </div>
+
+                    <h2>Working with Files in Python</h2>
+                    <div class="code-block">
+                        <pre><code><span class="keyword">import</span> os
+
+<span class="comment"># Get file size</span>
+file_path <span class="operator">=</span> <span class="string">"example.txt"</span>
+file_size <span class="operator">=</span> os.path.<span class="function">getsize</span>(file_path)
+<span class="function">print</span>(<span class="string">f"File size: <span class="variable">{human_readable_size(file_size)}</span>"</span>)
+
+<span class="comment"># Read file in chunks (for large files)</span>
+chunk_size <span class="operator">=</span> <span class="number">1024</span> <span class="operator">*</span> <span class="number">1024</span>  <span class="comment"># 1 MB chunks</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">"large_file.dat"</span>, <span class="string">"rb"</span>) <span class="keyword">as</span> f:
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        chunk <span class="operator">=</span> f.<span class="function">read</span>(chunk_size)
+        <span class="keyword">if</span> <span class="keyword">not</span> chunk:
+            <span class="keyword">break</span>
+        <span class="comment"># Process chunk</span>
+        <span class="function">print</span>(<span class="string">f"Read <span class="variable">{len(chunk)}</span> bytes"</span>)
+
+<span class="comment"># Calculate download time</span>
+file_size_mb <span class="operator">=</span> <span class="number">500</span>  <span class="comment"># MB</span>
+download_speed_mbps <span class="operator">=</span> <span class="number">50</span>  <span class="comment"># Megabits per second</span>
+
+<span class="comment"># Convert Mbps to MB/s (divide by 8)</span>
+download_speed_mbs <span class="operator">=</span> download_speed_mbps <span class="operator">/</span> <span class="number">8</span>
+time_seconds <span class="operator">=</span> file_size_mb <span class="operator">/</span> download_speed_mbs
+<span class="function">print</span>(<span class="string">f"Download time: <span class="variable">{time_seconds:.0f}</span> seconds"</span>)</code></pre>
+                    </div>
+
+                    <h2>Bits vs Bytes: Network Speeds</h2>
+                    <div class="highlight-box">
+                        <p><strong>Important distinction:</strong></p>
+                        <ul>
+                            <li><strong>Network speeds use bits per second (bps):</strong> 100 Mbps internet</li>
+                            <li><strong>File sizes use bytes:</strong> 500 MB download</li>
+                            <li><strong>Conversion:</strong> Divide bits by 8 to get bytes</li>
+                        </ul>
+                        <p>100 Mbps internet = 12.5 MB/s actual download speed</p>
+                    </div>
+
+                    <h2>Memory Optimization Tips</h2>
+                    <div class="highlight-box">
+                        <p><strong>For efficient Python programs:</strong></p>
+                        <ul>
+                            <li>Use generators instead of lists for large datasets (saves memory)</li>
+                            <li>Choose appropriate data types (int vs float, list vs tuple)</li>
+                            <li>Process large files in chunks, not all at once</li>
+                            <li>Use <code>sys.getsizeof()</code> to monitor memory usage</li>
+                            <li>Delete large objects when no longer needed</li>
+                            <li>Consider memory-mapped files for very large data</li>
+                        </ul>
+                    </div>
+
+                    <h2>Key Takeaways</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Bit is the smallest unit</strong> - represents 0 or 1</li>
+                            <li><strong>Byte = 8 bits</strong> - fundamental storage unit</li>
+                            <li><strong>Units scale by 1024</strong> in binary (KB, MB, GB, TB)</li>
+                            <li><strong>Binary vs decimal</strong> causes confusion in storage capacity</li>
+                            <li><strong>Network uses bits, storage uses bytes</strong> - different units for different purposes</li>
+                            <li><strong>Python provides tools</strong> to measure and convert between units</li>
+                            <li><strong>Understanding units helps optimize</strong> memory usage and performance</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../data-structures-algorithms.html" class="btn btn-secondary">← Back to Data Structures & Algorithms</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

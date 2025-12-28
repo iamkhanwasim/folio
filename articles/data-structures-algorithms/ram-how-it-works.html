@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understanding RAM and How It Works - Memory fundamentals for algorithms and data structures by Wasim Khan">
+    <title>RAM and How It Works - Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .formula {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        .highlight-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .highlight-box p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .highlight-box ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box li:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        .diagram {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .article-date {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        .memory-table {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        .memory-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+        }
+        .memory-table th {
+            background: #34495e;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .memory-table td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .memory-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.02);
+        }
+        .memory-table tr:hover {
+            background: rgba(var(--primary-rgb), 0.08);
+        }
+        .memory-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .memory-table td:nth-child(2) {
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.5px;
+        }
+        /* Reduce spacing between headings and content boxes */
+        .article-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem !important;
+        }
+        .article-content h2 + .formula,
+        .article-content h2 + .highlight-box,
+        .article-content h2 + .diagram,
+        .article-content h2 + .memory-table,
+        .article-content h2 + p,
+        .article-content h2 + ul,
+        .article-content h2 + div {
+            margin-top: 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#github" class="nav-link">Experience</a></li>
+                <li><a href="../../blog.html" class="nav-link">Articles</a></li>
+                <li><a href="../../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="blog" style="padding-top: 6rem;">
+        <div class="container">
+            <article class="blog-article">
+                <h1 class="article-title">RAM and How It Works</h1>
+                <p class="article-date">March 2020</p>
+
+                <div class="article-content">
+                    <p>RAM (Random Access Memory) is the working memory of a computer where data and programs are temporarily stored during execution. Understanding how RAM works is fundamental to writing efficient algorithms and choosing appropriate data structures.</p>
+
+                    <p>RAM provides fast, temporary storage that the processor can access directly. Unlike storage drives, RAM is volatile - data disappears when power is lost. This trade-off enables the speed necessary for real-time program execution.</p>
+
+                    <h2>What is Random Access?</h2>
+                    <div class="highlight-box">
+                        <p><strong>Random Access</strong> means you can access any memory location in constant time O(1), regardless of its position. This is different from sequential access where you must read through previous data first.</p>
+                        <p>Think of RAM like a grid of mailboxes. Each mailbox has a unique address. You can go directly to mailbox 1000 without opening mailboxes 1-999 first. This is random access.</p>
+                    </div>
+
+                    <h2>Memory Structure</h2>
+                    <p>RAM is organized as a linear array of bytes. Each byte has a unique address starting from 0:</p>
+
+                    <div class="memory-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>Value (byte)</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0x0000</td>
+                                    <td>01001010</td>
+                                    <td>First byte</td>
+                                </tr>
+                                <tr>
+                                    <td>0x0001</td>
+                                    <td>11010011</td>
+                                    <td>Second byte</td>
+                                </tr>
+                                <tr>
+                                    <td>0x0002</td>
+                                    <td>00110101</td>
+                                    <td>Third byte</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td>0xFFFF</td>
+                                    <td>10101100</td>
+                                    <td>Last byte (64KB RAM)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>How Data is Stored</h2>
+                    <p>Different data types occupy different amounts of memory:</p>
+
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>char (1 byte):</strong> Stored in a single memory location</li>
+                            <li><strong>int (4 bytes):</strong> Stored across 4 consecutive memory locations</li>
+                            <li><strong>double (8 bytes):</strong> Stored across 8 consecutive memory locations</li>
+                            <li><strong>Arrays:</strong> Stored in contiguous memory blocks</li>
+                            <li><strong>Pointers:</strong> Store memory addresses (typically 4 or 8 bytes)</li>
+                        </ul>
+                    </div>
+
+                    <h2>Memory Access Speed</h2>
+                    <p>RAM access is fast but not instant. Understanding access patterns helps optimize performance:</p>
+
+                    <div class="highlight-box">
+                        <h3>Access Time Characteristics:</h3>
+                        <ul>
+                            <li><strong>Direct access:</strong> ~10-100 nanoseconds for any location</li>
+                            <li><strong>Cache hit:</strong> 1-10 nanoseconds (faster than RAM)</li>
+                            <li><strong>Cache miss:</strong> Must fetch from RAM (~100 ns penalty)</li>
+                            <li><strong>Sequential access:</strong> Benefits from cache prefetching</li>
+                        </ul>
+                    </div>
+
+                    <h2>Why This Matters for Data Structures</h2>
+
+                    <div class="highlight-box">
+                        <h3>Arrays:</h3>
+                        <p>Store elements in contiguous memory. Index access is O(1) because:</p>
+                        <ul>
+                            <li>Element address = base_address + (index × element_size)</li>
+                            <li>Direct calculation, no traversal needed</li>
+                            <li>Cache-friendly due to sequential layout</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Linked Lists:</h3>
+                        <p>Nodes can be scattered across memory:</p>
+                        <ul>
+                            <li>Each node stores data + pointer to next node</li>
+                            <li>Access requires following pointers: O(n)</li>
+                            <li>Less cache-friendly due to random memory jumps</li>
+                            <li>But flexible for insertions/deletions</li>
+                        </ul>
+                    </div>
+
+                    <h2>Memory Addressing Example</h2>
+                    <div class="formula">
+                        <strong>Array element at index i:</strong><br>
+                        address = base_address + (i × sizeof(element))
+                    </div>
+
+                    <p>For an integer array starting at address 1000:</p>
+                    <ul>
+                        <li>arr[0] is at address 1000</li>
+                        <li>arr[1] is at address 1004 (1000 + 1×4)</li>
+                        <li>arr[2] is at address 1008 (1000 + 2×4)</li>
+                        <li>arr[n] is at address 1000 + n×4</li>
+                    </ul>
+
+                    <h2>Cache and Locality</h2>
+                    <p>Modern processors use cache memory (L1, L2, L3) to speed up RAM access. Two types of locality improve cache performance:</p>
+
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Temporal locality:</strong> Recently accessed data is likely to be accessed again soon</li>
+                            <li><strong>Spatial locality:</strong> Data near recently accessed locations is likely to be accessed soon</li>
+                        </ul>
+                        <p>Arrays benefit from spatial locality. Linked lists do not. This is why array iteration is often faster than linked list traversal despite both being O(n).</p>
+                    </div>
+
+                    <h2>Stack vs Heap Memory</h2>
+
+                    <div class="highlight-box">
+                        <h3>Stack Memory:</h3>
+                        <ul>
+                            <li>Automatically managed</li>
+                            <li>Fast allocation/deallocation</li>
+                            <li>Limited size (typically 1-8 MB)</li>
+                            <li>Local variables stored here</li>
+                            <li>LIFO (Last In First Out) structure</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Heap Memory:</h3>
+                        <ul>
+                            <li>Manually managed (malloc/free, new/delete)</li>
+                            <li>Slower allocation/deallocation</li>
+                            <li>Large size (limited by system RAM)</li>
+                            <li>Dynamic data structures stored here</li>
+                            <li>Can lead to fragmentation</li>
+                        </ul>
+                    </div>
+
+                    <h2>Practical Implications</h2>
+
+                    <div class="highlight-box">
+                        <p><strong>For algorithm design:</strong></p>
+                        <ul>
+                            <li>Prefer contiguous memory layouts (arrays) for read-heavy workloads</li>
+                            <li>Use linked structures when insertion/deletion frequency is high</li>
+                            <li>Consider cache effects for performance-critical code</li>
+                            <li>Minimize memory allocations in tight loops</li>
+                            <li>Be aware of memory limits when dealing with large datasets</li>
+                        </ul>
+                    </div>
+
+                    <h2>Key Takeaways</h2>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>RAM provides constant-time access</strong> to any memory location by address</li>
+                            <li><strong>Memory is organized as bytes</strong> with sequential addresses starting from 0</li>
+                            <li><strong>Data structures differ in memory layout</strong> affecting cache performance</li>
+                            <li><strong>Arrays are cache-friendly</strong> due to contiguous storage</li>
+                            <li><strong>Understanding memory</strong> helps choose the right data structure for the task</li>
+                            <li><strong>Stack and heap serve different purposes</strong> with different performance characteristics</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </article>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="../../data-structures-algorithms.html" class="btn btn-secondary">← Back to Data Structures & Algorithms</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Wasim Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

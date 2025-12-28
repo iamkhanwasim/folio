@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TOPIC}} | Wasim Khan</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        /* Article-specific styles */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .article-title {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .article-date {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        
+        .article-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Highlight box - for important introductions */
+        .highlight-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Concept box - for key concepts */
+        .concept-box {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .concept-box h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Example box - for practical examples */
+        .example-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .example-box h4 {
+            color: #f59e0b;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Code blocks */
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .code-block code {
+            color: #d4d4d4;
+        }
+        
+        /* Inline code */
+        .article-content code {
+            background: var(--bg-secondary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+        
+        /* Bullet points */
+        .article-content ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+        
+        .article-content ul li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+        
+        .article-content ul li strong {
+            color: var(--accent-color);
+        }
+        
+        /* Diagrams/Images */
+        .diagram {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .diagram-caption {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        /* Formula/Math blocks */
+        .formula {
+            background: var(--bg-secondary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Back button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-top: 3rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        /* Related articles section */
+        .related-articles {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .related-articles h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .related-articles ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .related-articles li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .related-articles a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .related-articles a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">Wasim Khan</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../blog.html" class="active">Articles</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <main class="article-container">
+        <article class="blog-article">
+            <h1 class="article-title">{{TOPIC}}</h1>
+            <p class="article-date">{{DATE}}</p>
+            
+            <div class="article-content">
+                
+                <!-- INTRODUCTION -->
+                <div class="highlight-box">
+                    <p>{{INTRODUCTION_TEXT}}</p>
+                </div>
+
+                <!-- DIAGRAM PLACEHOLDER (if needed) -->
+                <!-- DIAGRAM: {{TOPIC_SLUG}}-diagram-1.png -->
+                <div class="diagram">
+                    <img src="../../images/{{TOPIC_SLUG}}-diagram-1.png" alt="{{TOPIC}} Diagram">
+                    <p class="diagram-caption">{{DIAGRAM_CAPTION}}</p>
+                </div>
+
+                <!-- KEY CONCEPTS -->
+                <div class="concept-box">
+                    <h3>{{CONCEPT_TITLE}}</h3>
+                    <ul>
+                        <li><strong>{{CONCEPT_1_NAME}}:</strong> {{CONCEPT_1_DESC}}</li>
+                        <li><strong>{{CONCEPT_2_NAME}}:</strong> {{CONCEPT_2_DESC}}</li>
+                        <li><strong>{{CONCEPT_3_NAME}}:</strong> {{CONCEPT_3_DESC}}</li>
+                    </ul>
+                </div>
+
+                <!-- BODY CONTENT -->
+                <p>{{BODY_PARAGRAPHS}}</p>
+
+                <!-- EXAMPLE (if applicable) -->
+                <div class="example-box">
+                    <h4>Example</h4>
+                    <p>{{EXAMPLE_TEXT}}</p>
+                </div>
+
+                <!-- CODE BLOCK (if applicable) -->
+                <div class="code-block">
+                    <pre><code>{{CODE_CONTENT}}</code></pre>
+                </div>
+
+                <!-- FORMULA (if applicable) -->
+                <div class="formula">
+                    <strong>{{FORMULA}}</strong>
+                </div>
+
+                <!-- LIMITATIONS -->
+                <p>{{LIMITATIONS_TEXT}}</p>
+
+                <!-- CONCLUSION -->
+                <p>{{CONCLUSION_TEXT}}</p>
+
+            </div>
+
+            <!-- Related Articles (optional) -->
+            <div class="related-articles">
+                <h3>Related Articles</h3>
+                <ul>
+                    <li><a href="{{RELATED_1_URL}}">{{RELATED_1_TITLE}}</a></li>
+                    <li><a href="{{RELATED_2_URL}}">{{RELATED_2_TITLE}}</a></li>
+                </ul>
+            </div>
+
+            <!-- Back Button -->
+            <a href="../../{{CATEGORY}}.html" class="back-button">
+                ← Back to {{CATEGORY_DISPLAY_NAME}}
+            </a>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Wasim Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
